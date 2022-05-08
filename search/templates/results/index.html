@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}SyncIn - Search results{% endblock %}
+{% block title %}SyncIn - Résultats de recherche{% endblock %}
 
 {% block site_css %}{% endblock %}
 
@@ -42,6 +42,12 @@
                     </div>
                 </a>
             </div>
+        {% empty %}
+        <div class="cell small-12 result-container">
+            <div class="green title mid">
+                <h2 class="mid">No results</h2>
+            </div>
+        </div>
         {% endfor %}
         </grid-y>
     </div>

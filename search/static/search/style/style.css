@@ -563,6 +563,17 @@ h2.no-marginn {
     margin: 0;
 }
 
+.white { 
+    color: white !important;
+}
+
+.mid {
+    text-align: center !important;
+}
+.marginnn {
+    margin: 1 1 1 1rem;
+}
+
 
 
 

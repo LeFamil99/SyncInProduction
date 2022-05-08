@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}SyncIn - Se connecter{% endblock %}
+
+{% block site_css %}<link rel="stylesheet" href="{% static 'login/style/log-in.css' %}?{% now 'U' %}"/>{% endblock %}
+
+{% block body %}
+<div class="login">
+    <div class="username">
+        <input name="username" type="text" placeholder="Username">
+    </div>
+    <div class="password">
+        <input name="motdepasse" type="password" placeholder="Password">   
+    </div>
+    <div class="sign-in">
+        <button type="button">Sign in</button>
+    </div>
+    <div class="sign-up">
+        <button type="button">Sign Up</button>
+    </div>
+</div>
+{% endblock %}
