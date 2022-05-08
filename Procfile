@@ -1,2 +1,1 @@
-web: gunicorn wsgi:SyncIn
-release: python manage.py migrate
+web: python manage.py runserver 0.0.0.0:\$PORT
