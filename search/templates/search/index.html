@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Meta Celebrate</title>
+        <link rel="stylesheet" href="{% static 'search/style/foundation.css' %}"/>
+        <link rel="stylesheet" href="{% static 'search/style/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="{% static 'search/style/style.css' %}"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/MotionPathPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/BezierPlugin.min.js" integrity="sha512-plyexAULVlTExvDn2yUZFJV9F8q+53MC/GpU9dEuNGXmrrI3J8Rcffjvxg3OOBALBvF+UILPLIBEoCeF2maqTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
+        <!-- <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#resNav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">
+                    <img src="Images/logo1.png">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="resNav">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#Info">Info</a></li>
+                    <li><a href="#Roadmap">Roadmap</a></li>
+                    <li><a href="#Metaverse">Metaverse</a></li>
+                    <li><a href="#Team">Team</a></li>
+                </ul>
+            </div>
+        </nav> -->
+
+        <div class="nav-container">
+            <div class="top-bar s1">
+                <div class="top-bar-left">
+                    <div class="dropdown menu">
+                        <img src="http://via.placeholder.com/60" alt="Logo">
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <div class="show-for-medium">
+                        <ul class="menu show-for-medium">
+                            <li><a class="nav-link" href="/">Accueil</a></li>
+                            <li><a class="nav-link" href="/search">Recherche</a></li>
+                            <li><a class="nav-link" href="#">Contact</a></li>
+                            <li class="show-for-large"><a href="#">Sign in</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="show-for-small-only sbar-container">
+                    <div class="sbar"></div>
+                    <div class="sbar"></div>
+                    <div class="sbar"></div>
+                </div>
+            </div>
+            
+            <div class="top-bar s2 show-for-small-only">
+                <div class="top-bar-right">
+                    <div>
+                        <ul class="menu vertical">
+                            <li><a class="nav-link" href="/">Accueil</a></li>
+                            <li><a class="nav-link" href="/search">Recherche</a></li>
+                            <li><a class="nav-link" href="#">Contact</a></li>
+                            <li><a class="nav-link" href="#">Sign in</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <div class="grid-container">
+                <div class="grid-x">
+                    <div class="cell small-12">
+                        <form  method="get" action="{% url 'result' %}">
+                            <input type="text" name="vlad" id="vlad" class="search-input" placeholder="Recherchez une musique ..." autocomplete="off">
+                            <div class="submit-container">
+                                <button type="submit" class="search-button" id="submit">Rechercher</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+
+        <script src="{% static 'search/anim/countUp.js' %}"></script>
+        <script src="{% static 'search/anim/submit.js' %}"></script>
+    </body>
+    
+</html>
