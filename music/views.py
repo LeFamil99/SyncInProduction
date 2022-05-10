@@ -11,6 +11,7 @@ import lyricsgenius
 import time
 import random
 import array
+from login.models import Song, Album, Author
 #from SpotifySearch import *
 
 # Create your views here.
@@ -53,7 +54,7 @@ def getID(id, token):
 
     res = requests.get(url=searchUrl, headers=headers)
 
-    print("1 " + str(time.time()-tim))
+    #print("1 " + str(time.time()-tim))
     tim = time.time()
 
     resd = json.dumps(res.json(), indent=2)
@@ -68,7 +69,7 @@ def getID(id, token):
     for i in range (len(parsed["artists"]) - 1): 
         featArray.append(getArtist(parsed["artists"][i + 1]["id"], token, 1))
 
-    print("2 " + str(time.time()-tim))
+    #print("2 " + str(time.time()-tim))
     tim = time.time()
 
     duration = parsed["duration_ms"] / 1000
@@ -77,7 +78,7 @@ def getID(id, token):
         "seconds": math.floor(duration - math.floor(duration / 60) * 60)
     }
 
-    print("3 " + str(time.time()-tim))
+    #print("3 " + str(time.time()-tim))
     tim = time.time()
         
     o = {
@@ -86,6 +87,7 @@ def getID(id, token):
             "other": featArray
         },
         "infos": {
+            "id": parsed["id"],
             "title": parsed["name"],
             "duration": durationO,
             "spotify": parsed["external_urls"]["spotify"],
@@ -96,7 +98,7 @@ def getID(id, token):
         "slug": parsed["id"],
     }
 
-    print("4 " + str(time.time()-tim))
+    #print("4 " + str(time.time()-tim))
     tim = time.time()
     return o
 
@@ -131,9 +133,10 @@ def getImage(albumID, token, currentId, total):
                 })
 
     o = {
+        "id": parsed["id"],
         "image": parsed["images"][1]["url"],
         "name" : parsed["name"],
-        "release_date": parsed["release_date"],
+        "release_date": parsed["release_date"].split("-")[0],
         "spotify": parsed["external_urls"] ["spotify"],
         "others": songs
     }
@@ -177,6 +180,7 @@ def getArtist(ID, token, type):
     if len(parsed["images"]) > 0:
         image = parsed["images"][1]["url"]
     o = {
+        "id": parsed["id"],
         "name": parsed["name"], 
         "image": image,
         "description": getDesc(parsed["name"], type)
@@ -218,7 +222,7 @@ def getDesc(name, type):
     nameFF = "_".join(nameF.split(" "))
 
     formattedNames = [nameFF, nameFF + "_(chanteur)", nameFF + "_(chanteuse)", "_".join(name.split(" "))]
-    print(formattedNames)
+    #print(formattedNames)
     for i in range (len(formattedNames)):
         if "Mc" in formattedNames[i]:
             formattedNames[i] = "Mc".join([x.title() for x in formattedNames[i].split("Mc")])
@@ -236,7 +240,7 @@ def getDesc(name, type):
 
 def getYoutube(name): 
     searchWordCleaned = "".join([i for i in name if i.isalpha() or i.isspace()]).replace(' ', '+')
-    print(searchWordCleaned)
+    #print(searchWordCleaned)
 
     html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + urllib.parse.quote(searchWordCleaned))
     video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
@@ -269,9 +273,79 @@ def getYoutube(name):
 #     return A
 
 
+
+
 def musics (response, music_slug): 
-    token = setUp()
+    song = {}
+    try:
+        song = Song.objects.filter(spotId=music_slug)[0]
+    except:
+        print("Song not found, creating ...")
+        token = setUp()
 
-    objs = getID(music_slug, token)
+        objs = getID(music_slug, token)
+        print(objs)
 
-    return render(response, "musics/index.html", {"results": objs})
+        try:
+            artist = Author.objects.filter(spotId=objs["artist"]["main"]["id"])[0]
+        except:
+            print("Artist not found, creating ...")
+            Author.objects.create(
+                spotId=objs["artist"]["main"]["id"], 
+                name=objs["artist"]["main"]["name"],
+                desc=objs["artist"]["main"]["description"]["content"],
+                found=objs["artist"]["main"]["description"]["found"],
+                image=objs["artist"]["main"]["image"],
+                link=objs["artist"]["main"]["description"]["url"]
+            )
+            artist = Author.objects.filter(spotId=objs["artist"]["main"]["id"])[0]
+        
+        feats = []
+        for feat in objs["artist"]["other"]:
+            try:
+                feats.append(Author.objects.filter(spotId=feat["id"])[0])
+            except:
+                print("Feat artist " + str(feat) + " not found, creating ...")
+                Author.objects.create(
+                    spotId=feat["id"], 
+                    name=feat["name"],
+                    desc=feat["description"]["content"],
+                    found=feat["description"]["found"],
+                    image=feat["image"],
+                    link=feat["description"]["url"]
+                )
+            feats.append(Author.objects.filter(spotId=feat["id"])[0])
+
+
+        try:
+            album = Album.objects.filter(spotId=objs["album"]["id"])[0]
+        except:
+            print("Album not found, creating ...")
+            Album.objects.create(
+                spotId=objs["album"]["id"], 
+                name=objs["album"]["name"],
+                image=objs["album"]["image"],
+                link=objs["album"]["spotify"],
+                date=objs["album"]["release_date"],
+            )
+            album = Album.objects.filter(spotId=objs["album"]["id"])[0]
+
+        Song.objects.create(
+            spotId=objs["infos"]["id"], 
+            title=objs["infos"]["title"],
+            durationS=objs["infos"]["duration"]["seconds"],
+            durationM=objs["infos"]["duration"]["minutes"],
+            lyrics=objs["infos"]["lyrics"],
+            spotLink=objs["infos"]["spotify"],
+            ytLink=objs["infos"]["youtube"]
+        )
+        song = Song.objects.filter(spotId=music_slug)[0]
+        print(artist)
+        song.author.set([artist])
+        song.album.set([album])
+        song.save()
+        # song.feats.set(feats)
+
+    
+
+    return render(response, "musics/index.html", {"song": song, "author": song.author.all()[0], "album": song.album.all()[0]})

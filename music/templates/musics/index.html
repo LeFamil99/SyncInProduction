@@ -12,7 +12,7 @@
 
 <div class="grid-container music-container">
     <div class="title">
-        <h1>{{ results.infos.title }}</h1>
+        <h1>{{ results.title }}</h1>
     </div>
 
     <div class="author-container container">
@@ -21,21 +21,21 @@
         </div>
         <div class="main-author-container">
             <div class="author-img in">
-                <img src="{{ results.artist.main.image }}" alt="{{ results.artist.main.name }}">
+                <img src="{{ author.image }}" alt="{{ author.name }}">
             </div>
             <div class="author-description in">
-                <h2>{{ results.artist.main.name }}</h2>
-                <h3>{{ results.artist.main.description.content }}{% if results.artist.main.description.found %} ... (Wikipédia){% endif %}</h3>
-                {% if results.artist.main.description.found %}
-                <a class="green" target="_blank" href="{{ results.artist.main.description.url }}">En savoir plus</a>
+                <h2>{{ author.name }}</h2>
+                <h3>{{ author.desc }}{% if author.found %} ... (Wikipédia){% endif %}</h3>
+                {% if author.found %}
+                <a class="green" target="_blank" href="{{ author.link }}">En savoir plus</a>
                 {% endif %}
             </div>
         </div>
         <div class="other-authors-container grid-x grid-margin-x">
-            {% for artist in results.artist.other %}
+            {% for artist in results.feats %}
             <div  class="cell small-12 medium-6 large-4">
-                {% if artist.description.found %}
-                <a class="other-a" target="_blank" href="{{ artist.description.url }}">
+                {% if artist.found %}
+                <a class="other-a" target="_blank" href="{{ artist.link }}">
                     <div class="grid-x grid-margin-x">
                         <div class="other-author-img in cell small-4">
                             <img src="{{ artist.image }}" alt="{{ artist.name }}">
@@ -68,15 +68,15 @@
         <div class="grid-x grid-margin-x info-grid">
             <div class="cell small-12 large-6">
                 <div class="duration-container">
-                    <h2>Durée: {{ results.infos.duration.minutes }} min {{ results.infos.duration.seconds }} sec </h2>
+                    <h2>Durée: {{ song.duration_m }} min {{ song.duration_s }} sec </h2>
                 </div>
                 <div class="grid-x grid-margin-x links">
                     <div class="cell small-6">
                         <h2>Liens externes</h2>
                     </div>
                     <div class="cell small-6">
-                        <a target="_blank" href="{{ results.infos.spotify }}" class="green link">Spotify</a> <br /><br />
-                        <a target="_blank" href="{{ results.infos.youtube }}" class="red link">Youtube</a>
+                        <a target="_blank" href="{{ song.spot_link }}" class="green link">Spotify</a> <br /><br />
+                        <a target="_blank" href="{{ song.yt_link }}" class="red link">Youtube</a>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                     <h2>Paroles</h2>
                 </div>
                 <div class="lyrics-container">
-                    <p>{{ results.infos.lyrics }}</p>
+                    <p>{{ song.lyrics }}</p>
                 </div>
                 
             </div>
@@ -104,21 +104,21 @@
 
         <div class="main-author-container">
             <div class="author-img in">
-                <img src="{{ results.album.image }}" alt="{{ results.album.name }}">
+                <img src="{{ album.image }}" alt="{{ album.name }}">
             </div>
             <div class="author-description in">
-                <div class="title"><h2>{{ results.album.name }}</h2></div>
-                <h2 class="marginn">Release date: {{ results.album.release_date}}</h2>
-                <a target="_blank" href="{{ results.album.spotify }}" class="green link">Spotify</a>
+                <div class="title"><h2>{{ album.name }}</h2></div>
+                <h2 class="marginn">Release date: {{ album.date}}</h2>
+                <a target="_blank" href="{{ album.link }}" class="green link">Spotify</a>
             </div>
         </div>
 
         <div class="title">
-            <h2>Other songs from {{ results.album.name }}</h2>
+            <h2>Other songs from {{ album.name }}</h2>
         </div>
 
         <div class="other-authors-container grid-x grid-margin-x">
-            {% for song in results.album.others %}
+            <!-- {% for song in results.album.others %}
             <div  class="cell small-12 medium-6 large-4">
                 <a class="other-a" href="{% url 'music' song.id %}">
                     <div class="grid-x grid-margin-x">
@@ -131,7 +131,7 @@
                     </div>
                 </a>
             </div>
-            {% endfor %}
+            {% endfor %} -->
         </div>
     </div>
 

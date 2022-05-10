@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from login.models import Fav 
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from login.models import Profile 
 
 # Create your views here.
 
-class FavList(ListView):
+# class FavList(ListView):
 
-    model = Fav
-    context_object_name = 'favs'
+#     model = Fav
+#     context_object_name = 'favs'
+
+# class CreateView(CreateView):
+#     model = Fav
+
 
     # 25uBGaikHi0DhMiGMfuXYE
     # Painting Pictures

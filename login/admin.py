@@ -1,5 +1,22 @@
 from django.contrib import admin
-from .models import Fav
+from django.contrib.auth.models import Group, User
+from .models import Profile
+from .models import Song
+from .models import Album
+from .models import Author
 # Register your models here.
+class ProfileInline(admin.StackedInline):
+    model = Profile
 
-admin.site.register(Fav)
+class UserAdmin(admin.ModelAdmin):
+    model = User
+    fields = ["username"]
+    inlines = [ProfileInline]
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
+# admin.site.unregister(Group)
+
+admin.site.register(Song)
+admin.site.register(Album)
+admin.site.register(Author)
