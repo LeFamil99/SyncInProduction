@@ -348,10 +348,10 @@ def musics (response, music_slug):
         # song.save()
         # song.feats.set(feats)
 
-    try:
+    # try:
         profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
-    except:
-        profile = {"is_connected": False}
+    # except:
+    #     profile = {"is_connected": False}
 
     if response.method == "POST":
         data = response.POST
@@ -366,8 +366,8 @@ def musics (response, music_slug):
                 )
 
     try:
-        profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
-        favs = Fav.objects.filter(user=profile["prof"])
+        profile2 = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
+        favs = Fav.objects.filter(user=profile2["prof"])
         isLiked = False
         for fav in favs:
             if fav.song == song:
