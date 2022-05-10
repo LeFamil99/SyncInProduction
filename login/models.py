@@ -32,7 +32,7 @@ class Song(models.Model):
     spotId = models.CharField(max_length=200) 
     title = models.CharField(max_length=200) 
     author = models.ForeignKey(Author, null=True, blank=True, on_delete=models.CASCADE, related_name="written_by") 
-    # feats = models.ManyToManyField(Author, symmetrical=True, blank=True, related_name="feat_by") 
+    feats = models.ManyToManyField(Author, symmetrical=False, blank=True, related_name="feat_by") 
     durationS = models.IntegerField(null=True)
     durationM = models.IntegerField(null=True)
     lyrics = models.TextField(max_length=10000)

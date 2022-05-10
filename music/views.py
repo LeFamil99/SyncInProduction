@@ -343,15 +343,15 @@ def musics (response, music_slug):
         )
         song = Song.objects.filter(spotId=music_slug)[0]
         # print(artist)
-        # song.author.set([artist])
+        song.feats.set(feats)
         # song.album.set([album])
-        # song.save()
+        song.save()
         # song.feats.set(feats)
 
-    # try:
-    profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
-    # except:
-    #     profile = {"is_connected": False}
+    try:
+        profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
+    except:
+        profile = {"is_connected": False}
 
     if response.method == "POST":
         data = response.POST
@@ -364,6 +364,11 @@ def musics (response, music_slug):
                     song=song,
                     user=profile["prof"]
                 )
+        if action == "dislike":
+            try:
+                Fav.objects.filter(song=song, user=profile["prof"])[0].delete()
+            except:
+                print("Okok")
 
     try:
         profile2 = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}

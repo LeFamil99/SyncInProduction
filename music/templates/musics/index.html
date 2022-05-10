@@ -21,11 +21,11 @@
             {% csrf_token %}
             <div class="buttons">
                 {% if is_liked %}
-                <button class="button like static">LIKE</button>
-                <button class="button dislike live" name="fav" value="dislike">DISLIKE</button>
+                <button class="buttonn like static">LIKE</button>
+                <button class="buttonn dislike live" name="fav" value="dislike">DISLIKE</button>
                 {% else %}
-                <button class="button like live" name="fav" value="like">LIKE</button>
-                <button class="button dislike static">DISLIKE</button>
+                <button class="buttonn like live" name="fav" value="like">LIKE</button>
+                <button class="buttonn dislike static">DISLIKE</button>
                 {% endif %}
             </div>
         </form>
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="other-authors-container grid-x grid-margin-x">
-            {% for artist in results.feats %}
+            {% for artist in song.feats.all %}
             <div  class="cell small-12 medium-6 large-4">
                 {% if artist.found %}
                 <a class="other-a" target="_blank" href="{{ artist.link }}">
@@ -85,15 +85,15 @@
         <div class="grid-x grid-margin-x info-grid">
             <div class="cell small-12 large-6">
                 <div class="duration-container">
-                    <h2>Durée: {{ song.duration_m }} min {{ song.duration_s }} sec </h2>
+                    <h2>Durée: {{ song.durationM }} min {{ song.durationS }} sec </h2>
                 </div>
                 <div class="grid-x grid-margin-x links">
                     <div class="cell small-6">
                         <h2>Liens externes</h2>
                     </div>
                     <div class="cell small-6">
-                        <a target="_blank" href="{{ song.spot_link }}" class="green link">Spotify</a> <br /><br />
-                        <a target="_blank" href="{{ song.yt_link }}" class="red link">Youtube</a>
+                        <a target="_blank" href="{{ song.spotLink }}" class="green link">Spotify</a> <br /><br />
+                        <a target="_blank" href="{{ song.ytLink }}" class="red link">Youtube</a>
                     </div>
                 </div>
             </div>

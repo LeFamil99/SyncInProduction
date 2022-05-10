@@ -504,8 +504,8 @@ svg {
 .other-authors-container .other-a {
     height: 100%;
     padding: 0.5rem;
-    /* border: 2px solid black;
-    border-radius: 3px; */
+    border: 2px solid black;
+    border-radius: 3px;
 }
 
 .other-authors-container .other-a :hover {
@@ -574,7 +574,7 @@ h2.no-marginn {
     margin: 1 1 1 1rem;
 }
 
-.like-container .button {
+.like-container .buttonn {
     min-width: 12rem;
     min-height: 3rem;
     font-size: 2rem;
@@ -590,15 +590,51 @@ h2.no-marginn {
     transition: all 0.08s ease-out;
 }
 
-.like-container .button.static {
+.like-container .buttonn.small {
+    min-width: 6rem;
+    min-height: 6rem;
+    padding: 0 !important;
+    font-size: 4rem;
+}
+
+.like-container .buttonn.static {
     color: #888;
     border: 3px solid #888;
 }
 
-.like-container .button.live:hover {
+.like-container .buttonn.live:hover {
     color: #00E13C;
     border: 3px solid #00E13C;
+    cursor: pointer;
 }
+
+.like-container .buttonn:hover {
+    background-color: inherit;
+    cursor: default;
+}
+
+.grid-container .container .grid-x a.other-a {
+    padding: 0;
+}
+form.lala {
+    margin: auto;
+}
+
+.x-container .x {
+    text-align: center;
+    align-items: center;
+    position: relative;
+}
+
+.x-container .x .like-container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
 
 
 

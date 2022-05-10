@@ -15,13 +15,13 @@
         <div class="title">
             <h2>- Favoris -</h2>
         </div>
-
-        <div class="other-authors-container grid-x grid-margin-x">
+        {% if profile.is_connected %}
+        <div class="other-authors-container grid-x grid-margin-x grid-margin-y">
             <div  class="cell small-12">
                 <div class="grid-x grid-margin-x">
                     <div class="other-author-img in cell small-2">
                     </div>
-                    <div class="other-author-description in cell small-4">
+                    <div class="other-author-description in cell small-3">
                         <h2 class="marginnn ">Titre</h2>
                     </div>
                     <div class="other-author-description in cell small-3">
@@ -33,26 +33,42 @@
                 </div>
             </div>
             {% for fav in favs %}
-            <div  class="cell small-12">
-                <a class="other-a" href="{% url 'music' fav.song.spotId %}">
-                    <div class="grid-x grid-margin-x">
-                        <div class="other-author-img in cell small-2">
-                            <img src="{{ fav.song.album.image }}" alt="{{ fav.song.title }}">
-                        </div>
-                        <div class="other-author-description in cell small-4">
-                            <h2 class="marginnn white">{{ fav.song.title }}</h2>
-                        </div>
-                        <div class="other-author-description in cell small-3">
-                            <h2 class="marginnn white">{{ fav.song.author.name }}</h2>
-                        </div>
-                        <div class="other-author-description in cell small-3">
-                            <h2 class="marginnn white">{{ fav.timeSince.value }} {{ fav.timeSince.tag }}</h2>
+            <div  class="cell small-12 x-container">
+                <div class="grid-x">
+                    <div class="cell small-11">
+                        <a class="other-a" href="{% url 'music' fav.song.spotId %}">
+                            <div class="grid-x grid-margin-x">
+                                <div class="other-author-img in cell small-2">
+                                    <img src="{{ fav.song.album.image }}" alt="{{ fav.song.title }}">
+                                </div>
+                                <div class="other-author-description in cell small-4">
+                                    <h2 class="marginnn white">{{ fav.song.title }}</h2>
+                                </div>
+                                <div class="other-author-description in cell small-3">
+                                    <h2 class="marginnn white">{{ fav.song.author.name }}</h2>
+                                </div>
+                                <div class="other-author-description in cell small-3">
+                                    <h2 class="marginnn white">{{ fav.timeSince.value }} {{ fav.timeSince.tag }}</h2>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="cell small-1 x">
+                        <div class="other-author-description like-container ">
+                            <form class="lala" method="post">
+                                {% csrf_token %}
+                                <div class="buttons">
+                                    <button class="buttonn small dislike live" name="fav" value="{{ fav.song.id }}">X</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
+            
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 
     
