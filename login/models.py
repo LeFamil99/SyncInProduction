@@ -19,7 +19,7 @@ class Album(models.Model):
     id = models.AutoField(primary_key=True)
     spotId = models.CharField(max_length=200) 
     name = models.CharField(max_length=100)
-    date = models.IntegerField(default=2022, null=True)
+    dat = models.IntegerField(default=2022, null=True)
     link = models.CharField(max_length=200)
     image = models.CharField(max_length=300)
 

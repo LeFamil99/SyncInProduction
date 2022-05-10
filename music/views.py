@@ -326,7 +326,7 @@ def musics (response, music_slug):
                 name=objs["album"]["name"],
                 image=objs["album"]["image"],
                 link=objs["album"]["spotify"],
-                date=objs["album"]["release_date"],
+                dat=objs["album"]["release_date"],
             )
             album = Album.objects.filter(spotId=objs["album"]["id"])[0]
 
