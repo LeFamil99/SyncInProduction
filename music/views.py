@@ -349,7 +349,7 @@ def musics (response, music_slug):
         # song.feats.set(feats)
 
     # try:
-        profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
+    profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
     # except:
     #     profile = {"is_connected": False}
 
