@@ -12,8 +12,25 @@
 
 <div class="grid-container music-container">
     <div class="title">
-        <h1>{{ results.title }}</h1>
+        <h1>{{ song.title }}</h1>
     </div>
+
+    {% if profile.is_connected %}
+    <div class="like-container container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="buttons">
+                {% if is_liked %}
+                <button class="button like static">LIKE</button>
+                <button class="button dislike live" name="fav" value="dislike">DISLIKE</button>
+                {% else %}
+                <button class="button like live" name="fav" value="like">LIKE</button>
+                <button class="button dislike static">DISLIKE</button>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+    {% endif %}
 
     <div class="author-container container">
         <div class="title green">

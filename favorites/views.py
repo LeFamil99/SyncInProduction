@@ -6,6 +6,16 @@ from login.models import Profile
 
 # Create your views here.
 
+def favorites(response):
+    try:
+        profile = Profile.objects.filter(user=response.user)[0]
+        favs = profile.likes.all()
+
+    except:
+        favs = []
+
+    return render(response, "login/fav_list.html", {"favs": favs})
+
 # class FavList(ListView):
 
 #     model = Fav

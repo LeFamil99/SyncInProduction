@@ -574,6 +574,32 @@ h2.no-marginn {
     margin: 1 1 1 1rem;
 }
 
+.like-container .button {
+    min-width: 12rem;
+    min-height: 3rem;
+    font-size: 2rem;
+    text-align: center;
+    align-items: center;
+    background-color: inherit;
+    color: white;
+    border: 3px solid white;
+    border-radius: 3px;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+.like-container .button.static {
+    color: #888;
+    border: 3px solid #888;
+}
+
+.like-container .button.live:hover {
+    color: #00E13C;
+    border: 3px solid #00E13C;
+}
+
 
 
 

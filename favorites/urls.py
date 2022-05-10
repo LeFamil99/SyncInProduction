@@ -1,9 +1,9 @@
 from django.urls import path
-# from .views import FavList
+from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    # path("", FavList.as_view(), name="favorites"),
+    path("", views.favorites, name="favorites"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -11,7 +11,7 @@ import lyricsgenius
 import time
 import random
 import array
-from login.models import Song, Album, Author
+from login.models import Song, Album, Author, Profile, Fav
 #from SpotifySearch import *
 
 # Create your views here.
@@ -337,15 +337,42 @@ def musics (response, music_slug):
             durationM=objs["infos"]["duration"]["minutes"],
             lyrics=objs["infos"]["lyrics"],
             spotLink=objs["infos"]["spotify"],
-            ytLink=objs["infos"]["youtube"]
+            ytLink=objs["infos"]["youtube"],
+            author=artist,
+            album=album,
         )
         song = Song.objects.filter(spotId=music_slug)[0]
-        print(artist)
-        song.author.set([artist])
-        song.album.set([album])
-        song.save()
+        # print(artist)
+        # song.author.set([artist])
+        # song.album.set([album])
+        # song.save()
         # song.feats.set(feats)
 
-    
+    try:
+        profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
+    except:
+        profile = {"is_connected": False}
 
-    return render(response, "musics/index.html", {"song": song, "author": song.author.all()[0], "album": song.album.all()[0]})
+    if response.method == "POST":
+        data = response.POST
+        action = data.get("fav")
+        if action == "like":
+            try:
+                temp = Fav.objects.filter(song=song, user=profile["prof"])[0]
+            except:
+                Fav.objects.create(
+                    song=song,
+                    user=profile["prof"]
+                )
+
+    try:
+        profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
+        favs = Fav.objects.filter(user=profile["prof"])
+        isLiked = False
+        for fav in favs:
+            if fav.song == song:
+                isLiked = True
+    except:
+        isLiked = False
+
+    return render(response, "musics/index.html", {"song": song, "author": song.author, "album": song.album, "profile": profile, "is_liked": isLiked})

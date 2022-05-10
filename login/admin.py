@@ -4,6 +4,7 @@ from .models import Profile
 from .models import Song
 from .models import Album
 from .models import Author
+from .models import Fav
 # Register your models here.
 class ProfileInline(admin.StackedInline):
     model = Profile
@@ -20,3 +21,4 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Song)
 admin.site.register(Album)
 admin.site.register(Author)
+admin.site.register(Fav)
