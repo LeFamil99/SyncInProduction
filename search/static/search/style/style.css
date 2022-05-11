@@ -659,6 +659,10 @@ input:-webkit-autofill{
     -webkit-text-fill-color: white !important;
 }
 
+.no-padding {
+    padding: 0 !important;
+}
+
 
 
 
