@@ -24,3 +24,31 @@ $('.nav-link').on("click", function() {
     }, 200, "swing");
 });
 
+$(".sbar-container").on("mouseenter", () => {
+    $(".sbar-container").children().addClass("hover")
+})
+
+$(".sbar-container").on("mouseleave", () => {
+    $(".sbar-container").children().removeClass("hover")
+})
+
+let toggleSubmenu = false;
+
+$(".sbar-container").on("click", () => {
+    toggleSubmenu = !toggleSubmenu;
+    if(toggleSubmenu) {
+        $(".top-bar.s2").addClass("visible");
+    } else {
+        $(".top-bar.s2").removeClass("visible");
+    }
+})
+
+$(window).on("click", () => {
+    toggleSubmenu = false;
+    $(".top-bar.s2").removeClass("visible"); 
+});
+
+$('.top-bar').on("click", e => {
+    e.stopPropagation();
+});
+
