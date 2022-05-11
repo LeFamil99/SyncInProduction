@@ -30,11 +30,29 @@
                     <div class="dropdown menu">
                         <a class="no-padding" href="{% url 'home' %}" ><img src="{% static 'main/Images/favicon_io/android-chrome-512x512.png' %}" alt="Logo" width="60px"></a>
                     </div>
+                    {% if user.is_authenticated %}
+                        <div class="green show-for-large">
+                            <h3>Bonjour {{ user.get_short_name }}</h3>
+                        </div>
+                        <div class="green show-for-medium-only">
+                            <h3 class="smaller">Bonjour {{ user.get_short_name }}</h3>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="top-bar-right">
                     <div class="show-for-medium">
-                        <ul class="menu show-for-medium">
-                            <li><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+                        <ul class="menu show-for-large">
+                            <li class="show-for-large"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+                            <li><a class="nav-link" href="{% url 'search' %}">Recherche</a></li>
+                            <li><a class="nav-link" href="{% url 'favorites' %}">Favoris</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a></li>
+                            {% else %}
+                            <li><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
+                            {% endif %}
+                        </ul>
+                        <ul class="menu show-for-medium-only smaller">
+                            <li class="show-for-large"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
                             <li><a class="nav-link" href="{% url 'search' %}">Recherche</a></li>
                             <li><a class="nav-link" href="{% url 'favorites' %}">Favoris</a></li>
                             {% if user.is_authenticated %}

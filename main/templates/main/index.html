@@ -10,13 +10,7 @@
 <div class="grosse-image section" id="parallax">
     <div class="row"></div>
 </div>
-{% if user.is_authenticated %}
-<div class="container welcome-container">
-    <div class="title green">
-        <h2>Bonjour {{ user.username }}</h2>
-    </div>
-</div>
-{% endif %}
+
 <div class="meta-celebrate">
     <div id="Info"></div>
     <h1>Quel est le but de SyncIn</h1>
@@ -25,7 +19,7 @@
             <div class="cell small-12">Sync In est un assistant musical permettant d'optimiser votre expérience musicale. REcherchez simplement votre musique par nom ou par artiste et accédez à des tonnes d'informations en un clic ! Relaxez et profitez de votre musique pendant que Sync In gère le reste.</div> 
         </div>
     </div>
-    <img src="http://via.placeholder.com/300">
+    <img src="{% static 'main/Images/favicon_io/android-chrome-512x512.png' %}" width="300px">
 </div>
 
 
@@ -83,19 +77,19 @@
                         <path class="path" fill="none" stroke="#ffffff" stroke-width="5" d="M 50 50 C 74 188 135 222 223 223 C 313 224 380 248 420 350 C 428 371 461 355 515 371 C 602 404 574 524.3333 580 650 C 575 716 546 809 488 850 C 454 876 441 916 357 820 C 342 795 266 835 270 950" />
                     </svg>
                     <div class="destination d1">
-                        <img src="Images/address-3.png" alt="Destination" class="destination-img">
+                        <img src="{% static 'main/Images/address-3.png' %}" alt="Destination" class="destination-img">
                         <p class="destination-text">ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
                     </div>
                     <div class="destination d2">
-                        <img src="Images/address-3.png" alt="Destination" class="destination-img">
+                        <img src="{% static 'main/Images/address-3.png' %}" alt="Destination" class="destination-img">
                         <p class="destination-text">ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
                     </div>
                     <div class="destination d3">
-                        <img src="Images/address-3.png" alt="Destination" class="destination-img">
+                        <img src="{% static 'main/Images/address-3.png' %}" alt="Destination" class="destination-img">
                         <p class="destination-text">ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
                     </div>
                     <div class="destination d4">
-                        <img src="Images/address-3.png" alt="Destination" class="destination-img">
+                        <img src="{% static 'main/Images/address-3.png' %}" alt="Destination" class="destination-img">
                         <p class="destination-text">ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
                     </div>
                 </div>

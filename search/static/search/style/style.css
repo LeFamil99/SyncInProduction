@@ -1,45 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .big{
-  font-size: 8rem !important;
-  color: #00E13C;
+    font-size: 8rem !important;
+    color: #00E13C;
 }
 
 .celebrate-number p {
-  font-size: 2rem;
-  letter-spacing: .1rem;
+    font-size: 2rem;
+    letter-spacing: .1rem;
 }
 
 .navbar{
-  padding: 20px 20px 20px 20px;
-  background-color: black;
-  transition: all ease 0.4s;
+    padding: 20px 20px 20px 20px;
+    background-color: black;
+    transition: all ease 0.4s;
 }
 .navbar-brand{
-  font-size: 22px;
-  padding: 0 0 0 0;
+    font-size: 22px;
+    padding: 0 0 0 0;
 }
 .navbar .navbar-nav li a{
-  font-size: 16px;
-  color: black;
+    font-size: 16px;
+    color: black;
 }
 .navbar-brand img{
-  height: 100%;
+    height: 100%;
 }
 .navbar-default{
-  background-color: black;
-  color: #777;
+    background-color: black;
+    color: #777;
 }
 .navbar .navbar-nav li a {
-  font-size: 16px;
-  color: white;
+    font-size: 16px;
+    color: white;
 }
 .nav.navbar-nav.navbar-right li a{
-  font-family: 'Roboto', sans-serif;
-  font-size: x-large;
+    font-family: 'Roboto', sans-serif;
+    font-size: x-large;
+}
+.top-bar-left {
+    display: flex;
+}
+.nav-container h3 {
+    margin-left: 3rem;
+} 
+.nav-container h3.smaller {
+    margin-left: 3rem;
+    font-size: 1.7rem;
+} 
+.nav-container .s1 ul.smaller li {
+    font-size: 1.4rem;
 }
 body{
-  background-color: black;
+    background-color: black;
 }
 .grosse-image{
   position: relative;
@@ -47,7 +60,7 @@ body{
   max-height: 100%;
   margin-top: 81px;
   padding-top: 0px;
-  background-image: url("http://via.placeholder.com/600");
+  background-image: url("https://www.revolt.tv/wp-content/uploads/2021/08/swujmmd2ux49zdiknkp0.jpg");
   background-position: 50% 50%, 0px 0px;
   background-size: cover, auto;
   background-repeat: no-repeat, repeat;

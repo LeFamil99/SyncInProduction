@@ -99,7 +99,21 @@ post_save.connect(create_profile, sender=User)
 
 
 
+# Djalilou, ça c'est mon disstrack sur toi mon frère ... eh, mon pitre
 
+# Djalilou
+# Djalilou
+# Es-tu prêt à subir la colère de Djalilou
+
+# Tu parles comme un kangourou, Djalilou, Djalilou
+# Cet été, t'étais où, Djalilou, Djalilou
+# Aussi mytho que manitou, c'est relou, c'est relou
+# Moins poli, qu'un bijou, j'te f'rais pas des bisous
+# De subir la bite de Kirikou
+# Aussi mature qu'un bout d'chou, t'es chelou, t'es chelou
+
+# Djalilou
+# Djalilou
 
 
 
