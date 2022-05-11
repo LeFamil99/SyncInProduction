@@ -28,16 +28,20 @@
             <div class="top-bar s1">
                 <div class="top-bar-left">
                     <div class="dropdown menu">
-                        <img src="{% static 'main/Images/favicon_io/android-chrome-512x512.png' %}" alt="Logo" width="60px">
+                        <img href="{% url 'home' %}" src="{% static 'main/Images/favicon_io/android-chrome-512x512.png' %}" alt="Logo" width="60px">
                     </div>
                 </div>
                 <div class="top-bar-right">
                     <div class="show-for-medium">
                         <ul class="menu show-for-medium">
-                            <li><a class="nav-link" href="/">Accueil</a></li>
-                            <li><a class="nav-link" href="/search">Recherche</a></li>
-                            <li><a class="nav-link" href="/favorites">Favoris</a></li>
-                            <li><a class="nav-link" href="/login">Sign in</a></li>
+                            <li><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+                            <li><a class="nav-link" href="{% url 'search' %}">Recherche</a></li>
+                            <li><a class="nav-link" href="{% url 'favorites' %}">Favoris</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a></li>
+                            {% else %}
+                            <li><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -52,10 +56,14 @@
                 <div class="top-bar-right">
                     <div>
                         <ul class="menu vertical">
-                            <li><a class="nav-link" href="/">Accueil</a></li>
-                            <li><a class="nav-link" href="/search">Recherche</a></li>
-                            <li><a class="nav-link" href="#">Contact</a></li>
-                            <li><a class="nav-link" href="/login">Sign in</a></li>
+                            <li><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+                            <li><a class="nav-link" href="{% url 'search' %}">Recherche</a></li>
+                            <li><a class="nav-link" href="{% url 'favorites' %}">Favoris</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a></li>
+                            {% else %}
+                            <li><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -63,6 +71,9 @@
         </div>
 
         {% block body %}{% endblock %}
+
+        <script src="{% static 'main/anim/countUp.js' %}"></script>
+        <script src="{% static 'main/anim/app.js' %}"></script>
 
     </body>
 </html>

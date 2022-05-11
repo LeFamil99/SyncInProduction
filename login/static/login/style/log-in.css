@@ -1,21 +1,19 @@
-.login{
+/* .login{
     overflow: hidden;
     position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center; /*centers items on the line (the x-axis by default)*/
-    align-items: center; /*centers items on the cross-axis (y by default)*/
+    justify-content: center; /*centers items on the line (the x-axis by default)
+    align-items: center; /*centers items on the cross-axis (y by default)
     flex-direction: column;
     background-color: black;
 }
 .login div{
     align-self: center;
-    color: green;
     padding: 1%;
 }
 .login div button{
-    background-color: green;
     border: none;
     border-radius: 20px;
     color: white;
@@ -38,4 +36,162 @@
     display: inline-block;
     min-width: 50vw;
     min-height: 60px;
+} */
+
+.login-container {
+    margin-top: 15rem;
+    color: white;
 }
+
+.title h2 {
+    text-align: center;
+}
+
+label {
+    color: white;
+    font-size: 2.5rem
+}
+
+/* .login-container .text-input {
+    font-size: 2.5rem;
+    min-height: 3.75rem;
+    background-color: inherit;
+    color: white;
+    border: 0;
+} */
+
+form td {
+    width: 0;
+    max-height: 6rem;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+table {
+    width: 0;
+    margin: auto;
+}
+
+form td::after {
+    content: "";
+    background-color:rgba(255, 255, 255, 1);
+    width: 0;
+    height: 4px;
+    display: block;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+form td:hover::after {
+    background-color:#00E13C;
+    width: 100%;
+}
+
+form input[type=submit] {
+    width: 100%;
+    height: 100%;
+    font-size: 3.5rem;
+    color:rgba(255, 255, 255, 1);
+    background-color: black;
+    border: 0;
+}
+
+form input[type=submit]:hover {
+    color: rgba(0, 225, 60, 1);
+}
+
+tr {
+    background-color: black;
+}
+
+tr td {
+    margin: auto;
+}
+
+tbody {
+    border: 0;
+}
+
+form input[type=text] {
+    font-size: 3.2rem;
+    min-height: 5.2rem;
+    background-color: black;
+    border: 0;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+form input[type=text]:focus {
+    outline: none;
+    border: 3px solid rgba(0, 225, 60, 1);
+    color: #00E13C;
+    border-radius: 10px;
+    background-color: black;
+}
+
+form input[type=password] {
+    font-size: 3.2rem;
+    min-height: 5.2rem;
+    background-color: black;
+    border: 0;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+form input[type=password]:focus {
+    outline: none;
+    border: 3px solid rgba(0, 225, 60, 1);
+    color: #00E13C;
+    border-radius: 10px;
+    background-color: black;
+}
+
+form input[type=email] {
+    font-size: 3.2rem;
+    min-height: 5.2rem;
+    background-color: black;
+    border: 0;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+form input[type=email]:focus {
+    outline: none;
+    border: 3px solid rgba(0, 225, 60, 1);
+    color: #00E13C;
+    border-radius: 10px;
+    background-color: black;
+}
+
+.submit-container a {
+    color:rgba(0, 225, 60, 1);
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+.submit-container a:hover {
+    color: white;
+}
+

@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}SyncIn - Se connecter{% endblock %}
+
+{% block site_css %}<link rel="stylesheet" href="{% static 'login/style/log-in.css' %}?{% now 'U' %}"/>{% endblock %}
+
+{% block body %}
+<div class="login-container container">
+    <div class="title green">
+        <h2>Créer un compte</h2>
+    </div>
+    
+
+    <form method="post">
+        {% csrf_token %}
+            {{ form.as_p }}
+            <td class="submit-container"><input class="submit" type="submit" value="Créer"></td>
+    </form>
+
+    <div class="submit-container">
+        <h3>Vous avez déjà un compte ? <a href="{% url 'login' %}">Connectez-vous </a></h3>
+    </div>
+</div>
+{% endblock %}

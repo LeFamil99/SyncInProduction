@@ -31,20 +31,24 @@ const easeOutExpo = function (t, b, c, d) {
 console.log("Vlad")
 
 let demos = []
-
-for(let i = 0; i < 4; i++) {
-    let demo = new CountUp("purecounter" + i, $("#purecounter" + i).attr("data-purecounter-end"), {
-        duration: 2,
-        smartEasingThreshold: 999,
-        smartEasingAmount: 333,
-        useEasing : true,
-        useGrouping : true,
-        separator : '&#8239;',
-        // easingFn: easeOutExpo
-    });
-    demos.push(demo)
-    $("#purecounter" + i).parent().attr("style", "font-size: " + (16 / $("#purecounter" + i).attr("data-purecounter-end").toString().length) + "rem !important")
+try{ 
+    for(let i = 0; i < 4; i++) {
+        let demo = new CountUp("purecounter" + i, $("#purecounter" + i).attr("data-purecounter-end"), {
+            duration: 2,
+            smartEasingThreshold: 999,
+            smartEasingAmount: 333,
+            useEasing : true,
+            useGrouping : true,
+            separator : '&#8239;',
+            // easingFn: easeOutExpo
+        });
+        demos.push(demo)
+        $("#purecounter" + i).parent().attr("style", "font-size: " + (16 / $("#purecounter" + i).attr("data-purecounter-end").toString().length) + "rem !important")
+    }
+} catch(e) {
+    console.log(e.message)
 }
+    
 
 var path = document.querySelector('.path');
 var length = path.getTotalLength();

@@ -127,9 +127,13 @@ def getImage(albumID, token, currentId, total):
             print(currentId, songList[i + addon]["id"])
             addon += 1 if songList[i + addon]["id"] == currentId else 0
             if len(songList) >= i + addon + 1:
+                featArray = []
+                for i in range (len(parsed["artists"]) - 1): 
+                    featArray.append(getArtist(parsed["artists"][i + 1]["id"], token, 1))
+
                 songs.append({
                     "name": songList[i + addon]["name"],
-                    "id": songList[i + addon]["id"]
+                    "id": songList[i + addon]["id"],
                 })
 
     o = {
@@ -348,6 +352,8 @@ def musics (response, music_slug):
         song.save()
         # song.feats.set(feats)
 
+    
+
     try:
         profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
     except:
@@ -380,4 +386,4 @@ def musics (response, music_slug):
     except:
         isLiked = False
 
-    return render(response, "musics/index.html", {"song": song, "author": song.author, "album": song.album, "profile": profile, "is_liked": isLiked})
+    return render(response, "musics/index.html", {"song": song, "author": song.author, "album": song.album, "profile": profile, "is_liked": isLiked, "alt_songs": song.album.includes.all})

@@ -23,7 +23,7 @@ def favorites(response):
         except:
             print("Okok")
 
-    return render(response, "login/fav_list.html", {"favs": favs, "profile": profile})
+    return render(response, "login/fav_list.html", {"favs": favs, "profile": profile, "is_empty": len(favs) == 0})
 
 # class FavList(ListView):
 

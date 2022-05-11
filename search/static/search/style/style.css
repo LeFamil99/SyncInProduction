@@ -574,6 +574,7 @@ h2.no-marginn {
     margin: 1 1 1 1rem;
 }
 
+
 .like-container .buttonn {
     min-width: 12rem;
     min-height: 3rem;
@@ -628,10 +629,34 @@ form.lala {
 
 .x-container .x .like-container {
     margin: 0;
+    margin-left: 2rem;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+a.green:hover {
+    color: white;
+}
+
+
+input:-webkit-autofill {
+    -webkit-transition: all 0 ease-out !important;
+    -moz-transition: all 0 ease-out !important;
+    -o-transition: all 0 ease-out !important;
+    transition: all 0 ease-out !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px inset black !important;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: white !important;
 }
 
 

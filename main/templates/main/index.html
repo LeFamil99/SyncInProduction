@@ -10,6 +10,13 @@
 <div class="grosse-image section" id="parallax">
     <div class="row"></div>
 </div>
+{% if user.is_authenticated %}
+<div class="container welcome-container">
+    <div class="title green">
+        <h2>Bonjour {{ user.username }}</h2>
+    </div>
+</div>
+{% endif %}
 <div class="meta-celebrate">
     <div id="Info"></div>
     <h1>Quel est le but de SyncIn</h1>
@@ -130,8 +137,6 @@
 
 </div>
 
-<script src="{% static 'main/anim/countUp.js' %}"></script>
-<script src="{% static 'main/anim/app.js' %}"></script>
 {% endblock %}
 
 <!-- 

@@ -23,9 +23,12 @@
     </div>
 </div>
 
+
+
 <div class="results-container">
     <div class="grid-container-2">
         <div class="grid-y grid-margin-y">
+            <form action=""></form>
         {% for result in results %}
             <div class="cell small-12 result-container">
                 <a href="{% url 'music' result.slug %}">
@@ -53,8 +56,7 @@
     </div>
 </div>
 
-<script src="{% static 'search/anim/countUp.js' %}"></script>
-<script src="{% static 'search/anim/app.js' %}"></script>
+
 {% endblock %}
 
 

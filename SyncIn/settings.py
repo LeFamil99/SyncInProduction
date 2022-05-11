@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "favorites",
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -76,11 +77,17 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+            'tags': 'SyncIn.templatetags.tags',
+            },
         },
     },
 ]
 
 WSGI_APPLICATION = 'SyncIn.wsgi.application'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 
 # Database
@@ -142,5 +149,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import django_heroku
 django_heroku.settings(locals())
+
+
 
 
