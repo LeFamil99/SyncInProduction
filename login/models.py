@@ -10,7 +10,7 @@ class Author(models.Model):
     desc = models.TextField(max_length=3000)
     found = models.BooleanField(default=False)
     image = models.CharField(max_length=300)
-    link = models.CharField(max_length=200)
+    link = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return str(self.name) + "_" + str(self.id)
