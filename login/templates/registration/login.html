@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}SyncIn - Se connecter{% endblock %}
+{% block title %}Se connecter - SyncIn{% endblock %}
 
 {% block site_css %}<link rel="stylesheet" href="{% static 'login/style/log-in.css' %}?{% now 'U' %}"/>{% endblock %}
 
@@ -19,7 +19,7 @@
             {{ form.as_p }}
             <tr>
                 <td>&nbsp;</td>
-                <td class="submit-container"><input class="submit" type="submit" value="Submit"></td>
+                <td class="submit-container"><input class="submit" type="submit" value="Connecter"></td>
             </tr>                
         </table>
     </form>
