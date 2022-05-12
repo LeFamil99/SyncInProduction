@@ -11,7 +11,11 @@
 
 
 <div class="grid-container music-container">
-    <div class="title">
+    <div class="title show-for-large">
+        <h1>{{ song.title }}</h1>
+    </div>
+
+    <div class="title v2 hide-for-large">
         <h1>{{ song.title }}</h1>
     </div>
 
@@ -36,7 +40,7 @@
         <div class="title green">
             <h2>- Artistes -</h2>
         </div>
-        <div class="main-author-container">
+        <div class="main-author-container show-for-large">
             <div class="author-img in">
                 <img src="{{ author.image }}" alt="{{ author.name }}">
             </div>
@@ -48,6 +52,20 @@
                 {% endif %}
             </div>
         </div>
+
+        <div class="main-author-container-2 hide-for-large">
+            <div class="author-img in">
+                <img src="{{ author.image }}" alt="{{ author.name }}">
+            </div>
+            <div class="author-description in">
+                <h2>{{ author.name }}</h2>
+                <h3>{{ author.desc }}{% if author.found %} ... (Wikipédia){% endif %}</h3>
+                {% if author.found %}
+                <a class="green" target="_blank" href="{{ author.link }}">En savoir plus</a>
+                {% endif %}
+            </div>
+        </div>
+
         <div class="other-authors-container grid-x grid-margin-x">
             {% for artist in song.feats.all %}
             <div  class="cell small-12 medium-6 large-4">

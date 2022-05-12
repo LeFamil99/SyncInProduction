@@ -225,8 +225,8 @@ def getDesc(name, type):
     nameF = name.lower().title()
     nameFF = "_".join(nameF.split(" "))
 
-    formattedNames = [nameFF, nameFF + "_(chanteur)", nameFF + "_(chanteuse)", "_".join(name.split(" "))]
-    #print(formattedNames)
+    formattedNames = [nameFF, nameFF + "_(chanteur)", nameFF + "_(chanteuse)", nameFF + "_(groupe)", nameFF + "_(South_Korean_band)", "_".join(name.split(" "))]
+    print(formattedNames)
     for i in range (len(formattedNames)):
         if "Mc" in formattedNames[i]:
             formattedNames[i] = "Mc".join([x.title() for x in formattedNames[i].split("Mc")])

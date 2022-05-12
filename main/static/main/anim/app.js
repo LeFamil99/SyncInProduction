@@ -1,6 +1,6 @@
 //$(document).foundation();
 
-const controller = new ScrollMagic.Controller();
+
 
 /*new ScrollMagic.Scene({
     triggerElement: "#parallax",
@@ -48,7 +48,4 @@ $(window).on("click", () => {
     $(".top-bar.s2").removeClass("visible"); 
 });
 
-$('.top-bar').on("click", e => {
-    e.stopPropagation();
-});
 

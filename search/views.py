@@ -35,11 +35,13 @@ def setUp():
     return token
 
 
-def getID(query, token): 
+def getID(query, token, lengthh, offset): 
     
-    length = 10
+    length = lengthh + 1
 
-    searchUrl = f"https://api.spotify.com/v1/search?q=track:{query}&type=track&limit={length}"
+    l2 = min(length + offset, 50)
+
+    searchUrl = f"https://api.spotify.com/v1/search?q=track:{query}&type=track&limit={l2}&offset={offset}"
     headers = {
         "Authorization": "Bearer " + token
     }
@@ -48,7 +50,7 @@ def getID(query, token):
 
     resd = json.dumps(res.json(), indent=2)
 
-    #print(resd)
+    print(length, offset, resd)
     A = []
     for i in range(min(length, len(res.json()["tracks"]["items"]))):
         parsed = res.json()
@@ -58,7 +60,11 @@ def getID(query, token):
             "cover_url": getImage(parsed["tracks"]["items"][i]["album"]["id"], token),
             "slug": parsed["tracks"]["items"][i]["id"],
         })
-    return A
+    if len(A) == lengthh + 1:
+        A.pop()
+        return {"A": A, "plus": True, "next_offset": offset + lengthh}
+    else:
+        return {"A": A, "plus": False}
 
 
 def getImage(albumID, token):
@@ -91,7 +97,8 @@ def getImage(albumID, token):
 
 
 
-def results (response): 
+def results (response, offset = 0): 
+    offset = int(offset)
     #print(query)
     query = None
 
@@ -102,6 +109,6 @@ def results (response):
 
     token = setUp()
 
-    objs = getID(query, token)
+    objs = getID(query, token, 5 if offset == 0 else 10, offset)
 
     return render(response, "results/index.html", {"query": query, "results": objs})

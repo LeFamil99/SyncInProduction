@@ -1,3 +1,5 @@
+const controller = new ScrollMagic.Controller();
+
 const easeOutExpo = function (t, b, c, d) {
     return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b;
 }
@@ -68,6 +70,10 @@ gsap.registerPlugin(MotionPathPlugin);
 
 gsap.set("#pen", { xPercent: -50, yPercent: -50 })
 
+
+$('.top-bar').on("click", e => {
+    e.stopPropagation();
+});
 
 
 /*new ScrollMagic.Scene({
