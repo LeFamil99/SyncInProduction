@@ -28,11 +28,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t75+qmd#pkwu3i9ce+*!7e#z4_=kh_f_6ale83c^n&3vcp$wvg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ["https://lit-cove-27214.herokuapp.com"]
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://lit-cove-27214.herokuapp.com"]
 
 CSRF_TRUSTED_ORIGINS = ["https://lit-cove-27214.herokuapp.com"]
 
