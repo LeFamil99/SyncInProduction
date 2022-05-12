@@ -29,6 +29,7 @@ SECRET_KEY = 'django-insecure-t75+qmd#pkwu3i9ce+*!7e#z4_=kh_f_6ale83c^n&3vcp$wvg
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["https://lit-cove-27214.herokuapp.com"]
 
@@ -101,8 +102,8 @@ DATABASES = {
         "PASSWORD": "bar",
         "HOST": "localhost",
         "PORT": "5432",
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
