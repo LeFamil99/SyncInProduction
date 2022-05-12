@@ -4,13 +4,11 @@ import base64
 import json
 import urllib.request
 import wikipediaapi
-import wikipedia
 import math
 import re
 import lyricsgenius
 import time
 import random
-import array
 from login.models import Song, Album, Author, Profile, Fav
 #from SpotifySearch import *
 

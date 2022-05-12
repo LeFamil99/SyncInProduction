@@ -1,9 +1,12 @@
+<!-- Permet de créer le template à partir d'un autre deja existant, base.html -->
+
 {% extends 'base/base.html' %}
 
 {% load static %}
 
 {% block title %}Se connecter - SyncIn{% endblock %}
 
+<!-- Importe le fichier CSS pour ce template -->
 {% block site_css %}<link rel="stylesheet" href="{% static 'login/style/log-in.css' %}?{% now 'U' %}"/>{% endblock %}
 
 {% block body %}
@@ -12,10 +15,11 @@
         <h2>Se connecter</h2>
     </div>
     
-
+    <!-- Formulaire pour se connecter -->
     <form method="post">
         {% csrf_token %}
         <table>
+            <!-- Permet de générer un formulaire pour se connecter inclus dans django -->
             {{ form.as_p }}
             <tr>
                 <td>&nbsp;</td>
@@ -24,6 +28,7 @@
         </table>
     </form>
 
+    <!-- Option de créer un compte -->
     <div class="submit-container">
         <h3>Vous n'avez pas de compte ? <a href="{% url 'signup' %}">Créez-en un</a></h3>
     </div>

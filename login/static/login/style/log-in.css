@@ -1,65 +1,22 @@
-/* .login{
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center; /*centers items on the line (the x-axis by default)
-    align-items: center; /*centers items on the cross-axis (y by default)
-    flex-direction: column;
-    background-color: black;
-}
-.login div{
-    align-self: center;
-    padding: 1%;
-}
-.login div button{
-    border: none;
-    border-radius: 20px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    min-width: 30vw;
-    min-height: 60px;
-}
-.login div input{
-    background-color: black;
-    border: 2px outset white;
-    color: white;
-    font-size: 100%;
-    padding: 15px 32px;
-    text-align: start;
-    text-decoration: none;
-    display: inline-block;
-    min-width: 50vw;
-    min-height: 60px;
-} */
 
+/* Style le formulaire permettant de se conncter et de créer un compte */
 .login-container {
     margin-top: 15rem;
     color: white;
 }
 
+/* Style le titre du formulaire */
 .title h2 {
     text-align: center;
 }
 
+/* Style les titres des entrées de texte */
 label {
     color: white;
     font-size: 2.5rem
 }
 
-/* .login-container .text-input {
-    font-size: 2.5rem;
-    min-height: 3.75rem;
-    background-color: inherit;
-    color: white;
-    border: 0;
-} */
-
+/* Style le bouton submit */
 form td {
     width: 0;
     max-height: 6rem;
@@ -72,6 +29,7 @@ table {
     margin: auto;
 }
 
+/* Style la ligne qui apparait sous le bouton submit */
 form td::after {
     content: "";
     background-color:rgba(255, 255, 255, 1);
@@ -84,11 +42,13 @@ form td::after {
     transition: all 0.08s ease-out;
 }
 
+/* Crée l'animation de la ligne sous le bouton submit */
 form td:hover::after {
     background-color:#00E13C;
     width: 100%;
 }
 
+/* Style le bouton submit */
 form input[type=submit] {
     width: 100%;
     height: 100%;
@@ -98,6 +58,7 @@ form input[type=submit] {
     border: 0;
 }
 
+/* Change la couleur du bouton submit */
 form input[type=submit]:hover {
     color: rgba(0, 225, 60, 1);
 }
@@ -114,6 +75,7 @@ tbody {
     border: 0;
 }
 
+/* Style les boites d'entrée de texte */
 form input[type=text] {
     font-size: 3.2rem;
     min-height: 5.2rem;
@@ -129,6 +91,7 @@ form input[type=text] {
     transition: all 0.08s ease-out;
 }
 
+/* Style les boites d'entrée de texte après avoir cliqué sur celles-ci */
 form input[type=text]:focus {
     outline: none;
     border: 3px solid rgba(0, 225, 60, 1);
@@ -137,6 +100,7 @@ form input[type=text]:focus {
     background-color: black;
 }
 
+/* Style les boites d'entrée de texte pour les mots de passe */
 form input[type=password] {
     font-size: 3.2rem;
     min-height: 5.2rem;
@@ -152,6 +116,7 @@ form input[type=password] {
     transition: all 0.08s ease-out;
 }
 
+/* Style les boites d'entrée de texte pour les mots de passe après avoir cliqué sur celles-ci */
 form input[type=password]:focus {
     outline: none;
     border: 3px solid rgba(0, 225, 60, 1);
@@ -160,6 +125,7 @@ form input[type=password]:focus {
     background-color: black;
 }
 
+/* Style les boites d'entrée de texte pour les adresses email*/
 form input[type=email] {
     font-size: 3.2rem;
     min-height: 5.2rem;
@@ -175,6 +141,7 @@ form input[type=email] {
     transition: all 0.08s ease-out;
 }
 
+/* Style les boites d'entrée de texte pour les adresses email après avoir cliqué sur celles-ci */
 form input[type=email]:focus {
     outline: none;
     border: 3px solid rgba(0, 225, 60, 1);
@@ -183,6 +150,7 @@ form input[type=email]:focus {
     background-color: black;
 }
 
+/* Aide aux transitions sur le bouton submit */
 .submit-container a {
     color:rgba(0, 225, 60, 1);
     -webkit-transition: all 0.08s ease-out;

@@ -5,7 +5,9 @@ from .models import Song
 from .models import Album
 from .models import Author
 from .models import Fav
-# Register your models here.
+
+
+# Permet d'accéder à toutes tes tables de la db dans le panneau de controle admin inclus sur le site
 class ProfileInline(admin.StackedInline):
     model = Profile
 
@@ -15,7 +17,6 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-# admin.site.unregister(Group)
 
 admin.site.register(Song)
 admin.site.register(Album)

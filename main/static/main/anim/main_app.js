@@ -1,11 +1,14 @@
+// Ce fichier gère toutes les animations présentes sur la page d'accueil de notre site
+
 const controller = new ScrollMagic.Controller();
 
+// Fonction décrivant la courbe d'augmentation des nombres sur la page d'accueil
 const easeOutExpo = function (t, b, c, d) {
     return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b;
 }
 
-console.log("Vlad")
-
+// Cette fonction crée l'animation des nombres de la page d'accueil 
+// grâce à la librairie CountUp.js
 let demos = []
 try{ 
     for(let i = 0; i < 4; i++) {
@@ -30,7 +33,10 @@ var path = document.querySelector('.path');
 var length = path.getTotalLength();
 console.log(length) // 1506
 
+// Détecte quand tous les nombres ont terminé leur animation
 let countUpDone = new Array(demos.length).fill(false);
+
+// Cette fonction crée l'animation du chemin dans la Roadmap
 $(window).on("scroll", () => {
     for(let i = 0; i < 4; i++) {
         if(!countUpDone[i] && $(window).scrollTop() + $(window).height() - 120 > $("#purecounter" + i).offset().top) {
@@ -40,10 +46,12 @@ $(window).on("scroll", () => {
     }
 
 
+    // Crée l'animation de la liogne
     let curScroll = ($(window).scrollTop() + $(window).height() - 300) - ($(".roadmap").offset().top);
     console.log(curScroll)
     $(".path").attr("style", "stroke-dashoffset: " + (length - Math.min(length, (length / 800) * curScroll)))
 
+    //Crée l'animation des icones de destination
     if($(window).scrollTop() + $(window).height() > $(".destination.d1").offset().top + 220) {
         $(".destination.d1").addClass("active")
     } else $(".destination.d1").removeClass("active")
@@ -61,7 +69,7 @@ $(window).on("scroll", () => {
     } else $(".destination.d4").removeClass("active")
 })
 
-console.log($(".big").children(".purecounter").html().length)
+// console.log($(".big").children(".purecounter").html().length)
 
 
 
@@ -70,31 +78,7 @@ gsap.registerPlugin(MotionPathPlugin);
 
 gsap.set("#pen", { xPercent: -50, yPercent: -50 })
 
-
+// Permet d'ignorer la hauteur de la barre de navigation dans le template
 $('.top-bar').on("click", e => {
     e.stopPropagation();
 });
-
-
-/*new ScrollMagic.Scene({
-    triggerElement: ".roadmap",
-    triggerHook: "onLeave",
-    offset: -81,
-})
-.duration(10000)
-.setTween(gsap.to("#pen", { motionPath: {
-    path: "M 2 3 C -379 548 402 319 3 618 C 3 618 447 848 -418 967",
-    autoRotate: true
-}}))
-.setPin(".roadmap")
-.addTo(controller)*/
-
-/*new ScrollMagic.Scene({
-    triggerElement: ".roadmap",
-    triggerHook: "onEnter",
-    offset: 300,
-})
-.setTween(gsap.to(".path", 1, { drawSVG: true }))
-.addTo(controller);*/
-
-

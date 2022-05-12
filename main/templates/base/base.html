@@ -1,3 +1,5 @@
+<!-- Ce template sert de modèle et de base pour tous les autre -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,27 +7,29 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <title>{% block title %}{% endblock %}</title>
+
         <link rel="icon" type="image/x-icon" href="{% static 'main/Images/favicon_io/favicon.ico' %}">
+
         <link rel="stylesheet" href="{% static 'search/style/foundation.css' %}"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="{% static 'main/style/bootstrap-3.4.1/dist/css/bootstrap.css' %}"/> -->
         <link rel="stylesheet" href="{% static 'search/style/style.css' %}?{% now 'U' %}"/>
         {% block site_css %}{% endblock %}
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/MotionPathPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/BezierPlugin.min.js" integrity="sha512-plyexAULVlTExvDn2yUZFJV9F8q+53MC/GpU9dEuNGXmrrI3J8Rcffjvxg3OOBALBvF+UILPLIBEoCeF2maqTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/MotionPathPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/BezierPlugin.min.js" integrity="sha512-plyexAULVlTExvDn2yUZFJV9F8q+53MC/GpU9dEuNGXmrrI3J8Rcffjvxg3OOBALBvF+UILPLIBEoCeF2maqTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
+        <!-- Barre de navigation -->
         <div class="nav-container">
             <div class="top-bar s1">
+                <!-- Gauche de la barre -->
                 <div class="top-bar-left">
                     <div class="dropdown menu">
                         <a class="no-padding" href="{% url 'home' %}" ><img src="{% static 'main/Images/favicon_io/android-chrome-512x512.png' %}" alt="Logo" width="60px"></a>
@@ -39,8 +43,10 @@
                         </div>
                     {% endif %}
                 </div>
+                <!-- Droite de la barre -->
                 <div class="top-bar-right">
                     <div class="show-for-medium">
+                        <!-- Droite de la barre si l'écran est grand -->
                         <ul class="menu show-for-large">
                             <li class="show-for-large"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
                             <li><a class="nav-link" href="{% url 'search' %}">Recherche</a></li>
@@ -51,6 +57,7 @@
                             <li><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
                             {% endif %}
                         </ul>
+                        <!-- Droite de la barre si l'écran est moyen -->
                         <ul class="menu show-for-medium-only smaller">
                             <li class="show-for-large"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
                             <li><a class="nav-link" href="{% url 'search' %}">Recherche</a></li>
@@ -63,6 +70,7 @@
                         </ul>
                     </div>
                 </div>
+                <!-- Droite de la barre si l'écran et peti -->
                 <div class="show-for-small-only sbar-container">
                     <div class="sbar"></div>
                     <div class="sbar"></div>
@@ -70,6 +78,7 @@
                 </div>
             </div>
             
+            <!-- Menu déroulant pour les petits écrans -->
             <div class="top-bar s2 show-for-small-only">
                 <div class="top-bar-right">
                     <div>
@@ -88,6 +97,7 @@
             </div>
         </div>
 
+        <!-- Ce bloc contient tout le contenu de chaque page utilisant ce template de base -->
         {% block body %}{% endblock %}
 
         <script src="{% static 'main/anim/app.js' %}"></script>
