@@ -1,0 +1,165 @@
+
+/* Style le formulaire permettant de se conncter et de créer un compte */
+.login-container {
+    margin-top: 15rem;
+    color: white;
+}
+
+/* Style le titre du formulaire */
+.title h2 {
+    text-align: center;
+}
+
+/* Style les titres des entrées de texte */
+label {
+    color: white;
+    font-size: 2.5rem
+}
+
+/* Style le bouton submit */
+form td {
+    width: 0;
+    max-height: 6rem;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+table {
+    width: 0;
+    margin: auto;
+}
+
+/* Style la ligne qui apparait sous le bouton submit */
+form td::after {
+    content: "";
+    background-color:rgba(255, 255, 255, 1);
+    width: 0;
+    height: 4px;
+    display: block;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+/* Crée l'animation de la ligne sous le bouton submit */
+form td:hover::after {
+    background-color:#00E13C;
+    width: 100%;
+}
+
+/* Style le bouton submit */
+form input[type=submit] {
+    width: 100%;
+    height: 100%;
+    font-size: 3.5rem;
+    color:rgba(255, 255, 255, 1);
+    background-color: black;
+    border: 0;
+}
+
+/* Change la couleur du bouton submit */
+form input[type=submit]:hover {
+    color: rgba(0, 225, 60, 1);
+}
+
+tr {
+    background-color: black;
+}
+
+tr td {
+    margin: auto;
+}
+
+tbody {
+    border: 0;
+}
+
+/* Style les boites d'entrée de texte */
+form input[type=text] {
+    font-size: 3.2rem;
+    min-height: 5.2rem;
+    background-color: black;
+    border: 0;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+/* Style les boites d'entrée de texte après avoir cliqué sur celles-ci */
+form input[type=text]:focus {
+    outline: none;
+    border: 3px solid rgba(0, 225, 60, 1);
+    color: #00E13C;
+    border-radius: 10px;
+    background-color: black;
+}
+
+/* Style les boites d'entrée de texte pour les mots de passe */
+form input[type=password] {
+    font-size: 3.2rem;
+    min-height: 5.2rem;
+    background-color: black;
+    border: 0;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+/* Style les boites d'entrée de texte pour les mots de passe après avoir cliqué sur celles-ci */
+form input[type=password]:focus {
+    outline: none;
+    border: 3px solid rgba(0, 225, 60, 1);
+    color: #00E13C;
+    border-radius: 10px;
+    background-color: black;
+}
+
+/* Style les boites d'entrée de texte pour les adresses email*/
+form input[type=email] {
+    font-size: 3.2rem;
+    min-height: 5.2rem;
+    background-color: black;
+    border: 0;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+/* Style les boites d'entrée de texte pour les adresses email après avoir cliqué sur celles-ci */
+form input[type=email]:focus {
+    outline: none;
+    border: 3px solid rgba(0, 225, 60, 1);
+    color: #00E13C;
+    border-radius: 10px;
+    background-color: black;
+}
+
+/* Aide aux transitions sur le bouton submit */
+.submit-container a {
+    color:rgba(0, 225, 60, 1);
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
+}
+
+.submit-container a:hover {
+    color: white;
+}
+
