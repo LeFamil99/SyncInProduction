@@ -10,20 +10,21 @@ import lyricsgenius
 import time
 import random
 from login.models import Song, Album, Author, Profile, Fav
-#from SpotifySearch import *
 
-# Create your views here.
-
+# Identifiants pour se connecter à 'API de Spotify
 clientId = "5a3ae217ec7044f981b938869c691130"
 clientSecret = "efaf289a8333490bb4e335ca85a83347"
 
 def setUp():
-    # Step 1 - Authorization 
+    """Génère le token permettant de se connecter à l'API de Spotify
+
+    Returns:
+        String: Le token d'accès
+    """
     url = "https://accounts.spotify.com/api/token"
     headers = {}
     data = {}
 
-    # Encode as Base64
     message = f"{clientId}:{clientSecret}"
     messageBytes = message.encode('ascii')
     base64Bytes = base64.b64encode(messageBytes)
@@ -40,45 +41,39 @@ def setUp():
     return token
 
 
-def getID(id, token): 
-    tim = time.time()
-    
-    length = 10
+def getAllInfos(id, token): 
+    """Génère toutes les infos nécessaires sur une chanson
 
+    Args:
+        id (String): ID Spotify de la chanson
+        token (_type_): Token d'accès à l'API de Spotify
+
+    Returns:
+        dict: Dictionnaire contenant toutes les infos
+    """
+
+    # Requête des infos sur la chanson par le biais de l'API Spotify
     searchUrl = f"https://api.spotify.com/v1/tracks/{id}"
     headers = {
         "Authorization": "Bearer " + token
     }
-
     res = requests.get(url=searchUrl, headers=headers)
-
-    #print("1 " + str(time.time()-tim))
-    tim = time.time()
-
     resd = json.dumps(res.json(), indent=2)
-
-    #print(resd)
-    
     parsed = res.json()
 
-    #print(resd)
-
+    # Requête des informations sur tous les artistes "featured" dans la chanson
     featArray = []
     for i in range (len(parsed["artists"]) - 1): 
-        featArray.append(getArtist(parsed["artists"][i + 1]["id"], token, 1))
+        featArray.append(getArtist(parsed["artists"][i + 1]["id"], token, 0))
 
-    #print("2 " + str(time.time()-tim))
-    tim = time.time()
-
+    # Formattage de la durée de la chanson
     duration = parsed["duration_ms"] / 1000
     durationO = {
         "minutes": math.floor(duration / 60),
         "seconds": math.floor(duration - math.floor(duration / 60) * 60)
     }
 
-    #print("3 " + str(time.time()-tim))
-    tim = time.time()
-        
+    # Création du dictionnaire contenant toutes les infos sur la chanson
     o = {
         "artist": {
             "main": getArtist(parsed["artists"][0]["id"], token, 0),
@@ -92,48 +87,54 @@ def getID(id, token):
             "youtube": getYoutube(parsed["name"] + " " + parsed["artists"][0]["name"]),
             "lyrics": getLyrics(parsed["name"].split("(")[0], parsed["artists"][0]["name"])
         },
-        "album": getImage(parsed["album"]["id"], token, parsed["id"], parsed["album"]["total_tracks"]),
+        "album": getAlbumInfos(parsed["album"]["id"], token, parsed["id"], parsed["album"]["total_tracks"]),
         "slug": parsed["id"],
     }
 
-    #print("4 " + str(time.time()-tim))
-    tim = time.time()
     return o
 
-def getImage(albumID, token, currentId, total):
+def getAlbumInfos(albumID, token, currentId, total):
+    """Génère toutes les infos nécessaires sur un album
+
+    Args:
+        albumID (String): ID Spotify de l'album
+        token (String): Token d'accès à l'API de Spotify
+        currentId (String): ID Spotify de la chanson ayant appelé la fonction
+
+    Returns:
+        dict: Dictionnaire contenant toutes les infos
+    """
     
+    # Requête des infos sur l'album par le biais de l'API Spotify
     searchUrl = f"https://api.spotify.com/v1/albums/{albumID}"
     headers = {
         "Authorization": "Bearer " + token
     }
-
     res = requests.get(url=searchUrl, headers=headers)
-
     resd = json.dumps(res.json(), indent=2)
-
     parsed = res.json()
 
+    # Génère une liste de toutes les chansons de l'album
     songs = []
-
     songList = parsed["tracks"]["items"].copy()
     addon = 0
-
     random.shuffle(songList)
 
-    for i in range(3):
-        if len(songList) >= i + addon + 1:
-            print(currentId, songList[i + addon]["id"])
-            addon += 1 if songList[i + addon]["id"] == currentId else 0
-            if len(songList) >= i + addon + 1:
-                featArray = []
-                for i in range (len(parsed["artists"]) - 1): 
-                    featArray.append(getArtist(parsed["artists"][i + 1]["id"], token, 1))
+    # for i in range(3):
+    #     if len(songList) >= i + addon + 1:
+    #         print(currentId, songList[i + addon]["id"])
+    #         addon += 1 if songList[i + addon]["id"] == currentId else 0
+    #         if len(songList) >= i + addon + 1:
+    #             featArray = []
+    #             for i in range (len(parsed["artists"]) - 1): 
+    #                 featArray.append(getArtist(parsed["artists"][i + 1]["id"], token, 1))
 
-                songs.append({
-                    "name": songList[i + addon]["name"],
-                    "id": songList[i + addon]["id"],
-                })
+    #             songs.append({
+    #                 "name": songList[i + addon]["name"],
+    #                 "id": songList[i + addon]["id"],
+    #             })
 
+    # Création du dictionnaire contenant toutes les infos sur l'album
     o = {
         "id": parsed["id"],
         "image": parsed["images"][1]["url"],
@@ -146,41 +147,55 @@ def getImage(albumID, token, currentId, total):
     return o
 
 def getOnlyImage(albumID, token):
-    
+    """Génère l'URL de l'image d'un album
+
+    Args:
+        albumID (String): ID Spotify de l'album
+        token (String): Token d'accès à l'API de Spotify
+
+    Returns:
+        String: URL de l'image
+    """
+    # Requête des infos sur l'album par le biais de l'API Spotify
     searchUrl = f"https://api.spotify.com/v1/albums/{albumID}"
     headers = {
         "Authorization": "Bearer " + token
     }
-
     res = requests.get(url=searchUrl, headers=headers)
-
     resd = json.dumps(res.json(), indent=2)
-
-    #print(resd.split("\"artists\": [")[1])
-
     parsed = res.json()
 
+    # Génère et retourne l'URL de l'image
     return parsed["images"][1]["url"]
 
 def getArtist(ID, token, type):
+
+    """Génère toutes les infos nécessaires sur un album
+
+    Args:
+        ID (String): ID Spotify de l'artiste
+        token (String): Token d'accès à l'API de Spotify
+        type (Integer): 0 s'il ne faut pas générer la description de l'auteur
+
+    Returns:
+        dict: Dictionnaire contenant toutes les infos
+    """
     
+    # Requête des infos sur l'album par le biais de l'API Spotify
     searchUrl = f"https://api.spotify.com/v1/artists/{ID}"
     headers = {
         "Authorization": "Bearer " + token
     }
-
     res = requests.get(url=searchUrl, headers=headers)
-
     resd = json.dumps(res.json(), indent=2)
-
-    #print(resd)
-
     parsed = res.json()
-    #print (parsed["images"][1]["url"])
+    
+    # Génère l'URL de l'image de l'artiste, si cette image existe
     image = ""
-
     if len(parsed["images"]) > 0:
         image = parsed["images"][1]["url"]
+
+    # Création du dictionnaire contenant toutes les infos sur l'artiste
     o = {
         "id": parsed["id"],
         "name": parsed["name"], 
@@ -191,40 +206,46 @@ def getArtist(ID, token, type):
     return o
 
 def getLyrics(songName, artist):
+    """Génère les paroles d'une chanson à l'aide de l'API Genius
+
+    Args:
+        songName (String): Nom de la chanson
+        artist (String): Nom de l'artiste
+
+    Returns:
+        String: Paroles de la chanson formattées
+    """
+
+    # Requête des paroles par le biais de l'API Genius
     key = "Y-RRX84gWlRVqXEc6K_yUQJdzs3gftwzVIPX0LXRFVY4QSprakvrTYUcOR-FvE_kuHSAeJeRwpX1VQsjiw9qBA"
-
     genius = lyricsgenius.Genius(key)
-
     song = genius.search_song(songName, artist)
-    # print(songName, artist)
-    # print(song)
+    
+    # Génêre et retourne les paroles formattées
     return song.lyrics if not song == None else "Paroles indisponibles"
 
 
-
-    # # Encode as Base64
-    # message = f"{clientId}:{clientSecret}"
-    # messageBytes = message.encode('ascii')
-    # base64Bytes = base64.b64encode(messageBytes)
-    # base64Message = base64Bytes.decode('ascii')
-
-
-    # headers['Authorization'] = f"Basic {base64Message}"
-    # data['grant_type'] = "client_credentials"
-
-    # r = requests.post(url, headers=headers, data=data)
-
-    # token = r.json()['access_token']
-    
-    # return token
-
 def getDesc(name, type):
+    """Génère une description de 300 caractères sur l'artiste à l'aide de l'API de Wikipédia
+
+    Args:
+        name (String): Nom de l'artiste
+        type (int): 0 s'il ne faut pas générer le paragraphe, mais seulement l'URL Wikipédia
+
+    Returns:
+        _type_: _description_
+    """
+    # Requête de la description de l'artiste par le biais de l'API Wikipédia
     wiki_wiki = wikipediaapi.Wikipedia('fr')
+
+    # Gémère toutes les possibilités de string pouvant aller à la fin de l'URL Wikipédia, 
+    # permettant de trouver la bonne page
     nameF = name.lower().title()
     nameFF = "_".join(nameF.split(" "))
-
     formattedNames = [nameFF, nameFF + "_(chanteur)", nameFF + "_(chanteuse)", nameFF + "_(groupe)", nameFF + "_(South_Korean_band)", "_".join(name.split(" "))]
-    print(formattedNames)
+    
+    # Pour chaque possibilité, teste si la page correspond à la page d'un artiste, et si oui, 
+    # cette page est choisie pour générer la description de l'artiste
     for i in range (len(formattedNames)):
         if "Mc" in formattedNames[i]:
             formattedNames[i] = "Mc".join([x.title() for x in formattedNames[i].split("Mc")])
@@ -235,62 +256,58 @@ def getDesc(name, type):
     
     return {"content": "Page Wikipédia inexistante", "url": "", "found": False}
 
-    
-    #print("https://fr.wikipedia.org/wiki/" + "_".join(name.split(" ")))
+
 
     
 
 def getYoutube(name): 
-    searchWordCleaned = "".join([i for i in name if i.isalpha() or i.isspace()]).replace(' ', '+')
-    #print(searchWordCleaned)
+    """Génère l'adresse URL de la chanson sur Youtube
 
+    Args:
+        name (String): Nom de la chanson concaténé au nom de l'artiste
+
+    Returns:
+        String: URL Youtube de la chanson
+    """
+    # Formatte le nom pour l'insérer dans l'URL de Youtube
+    searchWordCleaned = "".join([i for i in name if i.isalpha() or i.isspace()]).replace(' ', '+')
+
+    # Génère l'URL Youtube du premier résultat lorsque le nom est cherché
     html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + urllib.parse.quote(searchWordCleaned))
     video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
+
     return "https://www.youtube.com/watch?v=" + video_ids[0]
-
-
-# def getID(query, token): 
-    
-#     length = 10
-
-#     searchUrl = f"https://api.spotify.com/v1/tracks/{id}"
-#     headers = {
-#         "Authorization": "Bearer " + token
-#     }
-
-#     res = requests.get(url=searchUrl, headers=headers)
-
-#     resd = json.dumps(res.json(), indent=2)
-
-#     #print(resd)
-#     A = []
-#     for i in range(min(length, len(res.json()["tracks"]["items"]))):
-#         parsed = res.json()
-#         A.append({
-#             "title": parsed["name"],
-#             "artist": parsed["artists"][0]["name"],
-#             "cover_url": getImage(["album"]["id"], token),
-#             "slug": parsed["tracks"]["items"][i]["id"],
-#         })
-#     return A
-
 
 
 
 def musics (response, music_slug): 
+    """Crée la vue pour la page URL de la musique et stocke les infos de la musique dans la db
+
+    Args:
+        response (dict): Contient toutes les infos de la page qui appelle la fonction
+        music_slug (String): ID Spotify de la chanson
+
+    Returns:
+        _type_: Vue de la page
+    """
     song = {}
     try:
+        # Vérifie si la chanson est déjà dans la db
         song = Song.objects.filter(spotId=music_slug)[0]
     except:
+
+        # Si non, ajoute la chanson à la db
         print("Song not found, creating ...")
         token = setUp()
 
-        objs = getID(music_slug, token)
+        objs = getAllInfos(music_slug, token)
         print(objs)
 
         try:
+            # Vérifie si l'artiste principal est déjà dans la db
             artist = Author.objects.filter(spotId=objs["artist"]["main"]["id"])[0]
         except:
+            # Si non, ajoute l'artiste à la db
             print("Artist not found, creating ...")
             Author.objects.create(
                 spotId=objs["artist"]["main"]["id"], 
@@ -305,8 +322,10 @@ def musics (response, music_slug):
         feats = []
         for feat in objs["artist"]["other"]:
             try:
+                # Vérifie si chacun des artistes "featured" est déjà dans la db
                 feats.append(Author.objects.filter(spotId=feat["id"])[0])
             except:
+                # Si non, ajoute les artistes "featured" à la db
                 print("Feat artist " + str(feat) + " not found, creating ...")
                 Author.objects.create(
                     spotId=feat["id"], 
@@ -320,8 +339,10 @@ def musics (response, music_slug):
 
 
         try:
+            # Vérifie si l'album est déj;a dans la db 
             album = Album.objects.filter(spotId=objs["album"]["id"])[0]
         except:
+            # Si non, ajoute l'album à la db
             print("Album not found, creating ...")
             Album.objects.create(
                 spotId=objs["album"]["id"], 
@@ -332,6 +353,7 @@ def musics (response, music_slug):
             )
             album = Album.objects.filter(spotId=objs["album"]["id"])[0]
 
+        # Ajoute la chanson à la db
         Song.objects.create(
             spotId=objs["infos"]["id"], 
             title=objs["infos"]["title"],
@@ -344,19 +366,16 @@ def musics (response, music_slug):
             album=album,
         )
         song = Song.objects.filter(spotId=music_slug)[0]
-        # print(artist)
         song.feats.set(feats)
-        # song.album.set([album])
         song.save()
-        # song.feats.set(feats)
 
-    
-
+    # Génère un dictionnaire contenant les infos sur l'utilisateur, si celui-ci est connecté
     try:
         profile = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
     except:
         profile = {"is_connected": False}
 
+    # Gère la requête HTTP permettant de mettre/retirer la chanson des favoris
     if response.method == "POST":
         data = response.POST
         action = data.get("fav")
@@ -374,6 +393,7 @@ def musics (response, music_slug):
             except:
                 print("Okok")
 
+    # Si un utilisateur est connecté, détermine si la chanson figure parmis ses favoris ou non
     try:
         profile2 = {"prof": Profile.objects.filter(user=response.user)[0], "is_connected": True}
         favs = Fav.objects.filter(user=profile2["prof"])

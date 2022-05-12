@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+/* Style les titres importants  */
 .big{
     font-size: 8rem !important;
     color: #00E13C;
 }
 
+/* Style les nombres sur la page d'accueil */
 .celebrate-number p {
     font-size: 2rem;
     letter-spacing: .1rem;
 }
 
-.navbar{
+/* .navbar{
     padding: 20px 20px 20px 20px;
     background-color: black;
     transition: all ease 0.4s;
@@ -37,161 +39,198 @@
 .nav.navbar-nav.navbar-right li a{
     font-family: 'Roboto', sans-serif;
     font-size: x-large;
-}
+} */
+
+/* Style la section gauche de la barre de navigation  */
 .top-bar-left {
     display: flex;
 }
+
+/* Style le message d'accueil sur la barre de navigation */
 .nav-container h3 {
     margin-left: 3rem;
 } 
+
+/* Style le message d'accueil sur la barre de navigation pour les petits écrans */
 .nav-container h3.smaller {
     margin-left: 3rem;
     font-size: 1.7rem;
 } 
+
+/* Style les différents choix à droite de la barre de navigation */
 .nav-container .s1 ul.smaller li {
     font-size: 1.4rem;
 }
+
+/* Style le corps de template */
 body{
     background-color: black;
 }
+
+/* Style la grande image sur la page d'accueil */
 .grosse-image{
-  position: relative;
-  height: 85vh;
-  max-height: 100%;
-  margin-top: 81px;
-  padding-top: 0px;
-  background-image: url("https://www.revolt.tv/wp-content/uploads/2021/08/swujmmd2ux49zdiknkp0.jpg");
-  background-position: 50% 50%, 0px 0px;
-  background-size: cover, auto;
-  background-repeat: no-repeat, repeat;
-  margin-bottom: 100px;
+    position: relative;
+    height: 85vh;
+    max-height: 100%;
+    margin-top: 81px;
+    padding-top: 0px;
+    background-image: url("https://psmag.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU1MTc2Njg2NTYyODQ2NjE1/gettyimages-462648526.jpg");
+    background-position: 30% 50%, 0px 0px;
+    background-size: cover, auto;
+    background-repeat: no-repeat, repeat;
+    margin-bottom: 100px;
 }
+
+/* Style le paragraphe de description du site sur la page d'accueil */
 .meta-celebrate{
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: white;
 }
+
+/* Style le titre du paragraphe de description */
 .meta-celebrate h1{
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 }
+
+/* Style le paragraphe de description du site sur la page d'accueil */
 .meta-celebrate .cell.small-12{
-  font-size: large;
-  padding: 30px 30px 70px 30px;
+    font-size: large;
+    padding: 30px 30px 70px 30px;
 }
+
+/* Style la section SyncIn en chiffres de la page d'accueil */
 .celebrate-number{
-  text-align: center;
-  padding-top: 100px;
-  color: white;
-  width: 100%;
+    text-align: center;
+    padding-top: 100px;
+    color: white;
+    width: 100%;
 }
+
+/* Style le titre de la section SyncIn en chiffres de la page d'accueil */
 .celebrate-number h1{
-  padding-bottom: 70px;
+    padding-bottom: 70px;
 }
 
+/* Style chaque cellule contenat un stat sur la page d'accueil */
 .celebrate-number .cell{
-  font-size: large;
-  padding: 30px 10% 30px 10%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  display: flex;
+    font-size: large;
+    padding: 30px 10% 30px 10%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
 }
 
+/* Style chaque cellule contenat un stat sur la page d'accueil */
 .celebrate {
-  margin: 1rem;
+    margin: 1rem;
 }
 
-
+/* Style la section de la roadmap */
 .roadmap{
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  margin-top: 0;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    margin-top: 0;
 }
+
+/* Style le titre de la section de la roadmap */
 .roadmap h1{
-  padding-bottom: 30px;
+    padding-bottom: 30px;
 }
 
+/* Style le corps du template  */
 html, body {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
+    font-family: "Roboto", sans-serif;
+    margin: 0;
 }
 
+/* Style la section de la barre de navigation */
 .top-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  overflow: hidden;
-  background-color: #000;
-  font-size: 1.7rem;
-  font-weight: 1.2rem;
-  letter-spacing: .08rem;
-  padding: 1rem 2rem 1rem 2.5rem;
-  border-bottom: 1px solid #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-size: 1.7rem;
+    font-weight: 1.2rem;
+    letter-spacing: .08rem;
+    padding: 1rem 2rem 1rem 2.5rem;
+    border-bottom: 1px solid #fff;
 }
 
+/* Style la section de la barre de navigation visible en tout temps */
 .top-bar.s1 {
     z-index: 2;
 }
 
+/* Style le menu déroulant de la barre de navigation */
 .top-bar.s2 {
     z-index: 1;
     top: -125px;
     transition: top 0.3s ease-out;
 }
 
+/* Style le menu déroulant de la barre de navigation lorsqu'il est visible */
 .top-bar.s2.visible {
     top: 80px;
 }
 
-
+/* Style la section droite de la barre de navigation */
 .top-bar .top-bar-right {
-  height: 100%;
+    height: 100%;
 }
 
+/* Style la section droite du menu déroulant de la barre de navigation */
 .top-bar.s2 .top-bar-right {
     max-width: 20rem;
     margin: auto;
-  }
+}
 
+/* Style chaque élément de la section droite de la barre de navigation */
 .top-bar .top-bar-right .menu li {
-  height: 100%;
-  padding-right: .7rem;
-  padding-left: .7rem;
-  background-color: #000000;
-  color: #fff !important;
+    height: 100%;
+    padding-right: .7rem;
+    padding-left: .7rem;
+    background-color: #000000;
+    color: #fff !important;
 }
 
-
+/* Style chaque élément de la section droite de la barre de navigation */
 .top-bar .top-bar-right .menu li a {
-  color: #fff;
-  transition: color linear .1s;
+    color: #fff;
+    transition: color linear .1s;
 }
 
+/* Style chaque élément de la section droite du menu déroulant de la barre de navigation */
 .top-bar.s2 .top-bar-right .menu li a {
     text-align: center;
     font-size: 2.2rem;
 }
 
+/* Style chaque élément de la section droite du menu déroulant de la barre de navigation */
 .top-bar.s2 .top-bar-right .menu li {
     padding: 0.5rem;
 }
 
-
+/* Style chaque élément de la section droite de la barre de navigation lorsque la souris passe dessus */
 .top-bar .top-bar-right .menu li:hover > a {
-  color: #00E13C;
-  text-decoration: none;
+    color: #00E13C;
+    text-decoration: none;
 }
 
-
+/* Style chaque grille avec le framework Foundation.css */
 .grid-container {
-  max-width: 135rem;
+    max-width: 135rem;
 }
 
+/* Style la barre de navigation pour les petits écrans lorsque la souris passe dessus */
 .sbar-container:hover {
     cursor: pointer;
 }
 
+/* Style la barre de navigation pour les petits écrans */
 .sbar {
     width: 50px;
     height: 7px;
@@ -201,35 +240,42 @@ html, body {
     transition: background-color linear .1s;
 }
 
+/* Style la barre de navigation pour les petits écrans lorsque la souris passe dessus */
 .sbar.hover {
     background-color: #00E13C;
 }
 
+/* Style la section de la roadmap sur la page d'accueil */
 .roadmap {
     min-height: 100vh;
     background-color: #000;
 }
 
+/* Style le crayon qui trace le trait dans la section de la roadmap */
 #pen {
     display: inline-block;
     position: absolute;
     margin: auto;
 }
 
+/* Style le trait dans la section de la roadmap */
 .path {
     stroke-dasharray: 1506;
     stroke-dashoffset: 1506;
     /*animation: dash 5s linear alternate 1*/
 }
 
+/* Style le trait dans la section de la roadmap */
 .small-destination-container path {
     stroke-dasharray: 10;
 }
 
+/* Style la section contenant le trait de la roadmap */
 .road-container {
     position: relative;
 }
 
+/* Style chaque destination dans la roadmap */
 .destination {
     position: absolute;
     display: flex;
@@ -237,10 +283,12 @@ html, body {
     transition: opacity .5s linear
 }
 
+/* Style chaque destination dans la roadmap lorsqu'elle apparait*/
 .destination.active {
     opacity: 1;
 }
 
+v
 .destination.smaller {
     opacity: 1;
     position: relative;
@@ -249,258 +297,288 @@ html, body {
     text-align: center;
 }
 
-/*.small-destination-container::after {
-    content: "";
-    left: 25px;
-    width: 100%;
-    height: 40rem;
-    border: 2px solid #fff;
-    border-radius: 2px;
-    position: relative;
-    display: relative;
-}*/
-
+/* Style l'image de chaque destination dans la roadmap pour les petits écrans */
 .destination.smaller .destination-img {
     margin-right: 2rem;
     margin-bottom: 1rem;
 }
 
+/* Style la destination #1 dans la roadmap pour les petits écrans */
 .destination.d1 {
     top: 0px;
     left: 25px;
     width: 50%;
 }
 
+/* Style la destination #2 dans la roadmap pour les petits écrans */
 .destination.d2 {
     top: 300px;
     left: 395px;
     width: 50%;
 }
 
+/* Style la destination #3 dans la roadmap pour les petits écrans */
 .destination.d3 {
     top: 600px;
     left: 555px;
     width: 35%;
 }
 
+/* Style la destination #4 dans la roadmap pour les petits écrans */
 .destination.d4 {
     top: 900px;
     left: 245px;
     width: 65%;
 }
 
+/* Style l'image de chaque destination dans la roadmap */
 .destination .destination-img {
     height: 50px;
 }
 
+/* Style la description de chaque destination dans la roadmap */
 .destination .destination-text {
     font-size: 1.8rem;
 }
 
+/* Style les sections pour les petits écrans */
 .small-container {
     max-width: 90%;
 }
 
+/* Style le trait de la roadmap */
 svg {
     width: 100%;
 }
 
-
+/* Style le trait de la roadmap */
 .meta {
     height: 100vh;
 }
 
+/* Style une section d'une page */
 .section {
     margin-bottom: 4rem;
     margin-top: 4rem;
 }
 
+/* Style le titre d'une section */
 .title {
     margin-bottom: 4rem;
 }
 
+/* Style la section de la barre de recherche */
 .search-container {
-  margin-top: 40vh;
-  min-height: 15vh;
+    margin-top: 40vh;
+    min-height: 15vh;
 }
 
+/* Style la section de la barre de recherche pour les petits écrans */
 .search-container.smaller {
-  margin-top: 100px;
+    margin-top: 100px;
 }
 
+/* Style le formulaire dans la section de la barre de recherche */
 .search-container form {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
+/* Style le formulaire dans la section de la barre de recherche pour les petits écrans */
 .search-container.smaller.flex form {
-  display: flex;
+    display: flex;
 }
 
+/* Style la section d'entrée de texte dans la section de la barre de recherche */
 .search-container form .search-input {
-  font-size: 6.5rem;
-  min-height: 8rem;
-  background-color: black;
-  border: 0;
-  border: 3px solid rgba(255, 255, 255, 1);
-  border-radius: 5px;
-  color: white;
-  text-align: center;
-  -webkit-transition: all 0.08s ease-out;
-  -moz-transition: all 0.08s ease-out;
-  -o-transition: all 0.08s ease-out;
-  transition: all 0.08s ease-out;
+    font-size: 6.5rem;
+    min-height: 8rem;
+    background-color: black;
+    border: 0;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
 }
 
+/* Style la section d'entrée de texte dans la section de la barre de recherche pour les petits écrans */
 .search-container.smol form .search-input {
     font-size: 3.75rem;
     min-height: 5rem;
 }
 
+/* Style la section d'entrée de texte dans la section de la barre de recherche lorsque celle-ci est cliquée */
 .search-container form .search-input:focus {
-  outline: none;
-  border: 3px solid rgba(0, 225, 60, 1);
-  color: #00E13C;
-  border-radius: 10px;
+    outline: none;
+    border: 3px solid rgba(0, 225, 60, 1);
+    color: #00E13C;
+    border-radius: 10px;
 }
 
+/* Style le bouton de recherche dans la section de la barre de recherche */
 .search-container form .submit-container {
-  width: 20rem;
-  height: 6rem;
-  margin: auto;
-  margin-top: 3rem;
+    width: 20rem;
+    height: 6rem;
+    margin: auto;
+    margin-top: 3rem;
 }
 
+/* Style le bouton de recherche dans la section de la barre de recherche pour les petits écrans*/
 .search-container.smaller.flex form .submit-container {
     margin-left: 3rem;
 }
 
+/* Style le bouton de recherche dans la section de la barre de recherche pour les petits écrans */
 .search-container.smaller form .submit-container {
     margin: auto;
 }
 
+/* Style la barre sous le bouton de recherche dans la section de la barre de recherche */
 .search-container form .submit-container::after {
-  content: "";
-  background-color:rgba(255, 255, 255, 1);
-  width: 0;
-  height: 4px;
-  display: block;
-  -webkit-transition: all 0.08s ease-out;
-  -moz-transition: all 0.08s ease-out;
-  -o-transition: all 0.08s ease-out;
-  transition: all 0.08s ease-out;
+    content: "";
+    background-color:rgba(255, 255, 255, 1);
+    width: 0;
+    height: 4px;
+    display: block;
+    -webkit-transition: all 0.08s ease-out;
+    -moz-transition: all 0.08s ease-out;
+    -o-transition: all 0.08s ease-out;
+    transition: all 0.08s ease-out;
 }
 
+/* Style la barre sous le bouton de recherche dans la section de la barre de recherche lorsque la souris passe dessus */
 .search-container form .submit-container:hover::after {
-  background-color:#00E13C;
-  width: 100%;
+    background-color:#00E13C;
+    width: 100%;
 }
 
+/* Style la barre sous le bouton de recherche dans la section de la barre de recherche pour les petits écrans */
 .search-container.smaller form .submit-container:hover::after {
-  background-color:#00E13C;
-  width: 0;
+    background-color:#00E13C;
+    width: 0;
 }
 
+/* Style le bouton de recherche dans la section de la barre de recherche */
 .search-container form .search-button {
-  width: 100%;
-  height: 100%;
-  font-size: 3.5rem;
-  color:rgba(255, 255, 255, 1);
-  background-color: black;
-  border: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 3.5rem;
+    color:rgba(255, 255, 255, 1);
+    background-color: black;
+    border: 0;
 }
 
+/* Style le bouton de recherche dans la section de la barre de recherche lorsque la souris passe dessus */
 .search-container form .search-button:hover {
-  color: rgba(0, 225, 60, 1);
+    color: rgba(0, 225, 60, 1);
 }
 
 ::placeholder {
-  color: #00E13C;
-  opacity: 0; 
+    color: #00E13C;
+    opacity: 0; 
 }
 
 :-ms-input-placeholder { 
-  color: #00E13C;
+    color: #00E13C;
 }
 
 ::-ms-input-placeholder { 
-  color: #00E13C;
+    color: #00E13C;
 }
 
+/* Style la section contenant les résultats de la recherche */
 .results-container {
-  margin-top: 4rem;
+    margin-top: 4rem;
 }
 
+/* Style l'image de chaque résultat de la section contenant les résultats de la recherche */
 .results-container .img {
-  text-align: right;
-  width: 250px;
+    text-align: right;
+    width: 250px;
 }
 
+/* Style le texte de chaque résultat de la section contenant les résultats de la recherche */
 .results-container .text {
-  height: 100%;
-  color: #fff;
+    height: 100%;
+    color: #fff;
 }
 
+/* Style le texte de chaque résultat de la section contenant les résultats de la recherche */
 .results-container p {
     font-size: 3rem;
     margin: 10px 0 10px;
 }
 
+/* Style chaque grille avec le framework Foundation.css */
 .grid-container-2 {
     max-width: 84%;
     margin: 0 auto 0 auto;
     overflow: hidden;
 }
 
+/* Style la section d'information sur la musique */
 .music-container {
     margin-top: 120px;
     color: #fff;
 }
 
+/* Style l'écriture en vert */
 .green {
     color:rgba(0, 225, 60, 1)
 }
 
+/* Style les titres de sections */
 .title {
     text-align: center;
     margin-top: 5rem;
 }
 
+/* Style les titres de sections */
 .title h1 {
     font-size: 6rem;
 }
 
+/* Style les titres de sections */
 .title.v2 h1 {
     font-size: 4.5rem;
 }
 
+/* Style les titres de sections */
 .title h2 {
     text-align: left;
     font-size: 4rem;
 }
 
+/* Style la section d'information sur l'artiste principal */
 .main-author-container {
     display: flex;
     margin-bottom: 2rem;
 }
 
+/* Style la section d'information sur l'artiste principal pour les petits écrans */
 .main-author-container-2 {
     display: block;
     margin-bottom: 2rem;
 }
 
-
+/* Style l'image de la section d'information sur l'artiste principal */
 .author-img {
     margin-right: 2rem;
 }
 
+/* Style l'image de la section d'information sur l'artiste principal */
 .author-img img {
     min-width: 220px;
     border: 2px solid white;
     border-radius: 3px;
 }
 
+/* Style les images de la section d'information sur les artistes "featured" */
 .other-author-img img {
     min-height: 80px;
     max-height: 120px;
@@ -508,30 +586,30 @@ svg {
     border-radius: 3px;
 }
 
-/* .other-author-description {
-    margin-left: 10%;
-} */
-
+/* Gère les events dans la section d'information sur les artistes */
 .author-container .in {
     display: inline-block;
 }
-
 .other-authors-container .in {
     pointer-events: none;
 }
 
+/* Style le lien externe de la section d'information sur l'artiste principal */
 .main-author-container a {
     font-size: 24px;
 }
 
+/* Style le lien externe de la section d'information sur l'artiste principal lorsque la souris passe dessus*/
 .main-author-container a :hover {
     color:rgba(0, 225, 60, 0.8);
 }
 
+/* Style les descriptions de la section d'information sur les artistes "featured" */
 .other-author-description {
     color:rgba(0, 225, 60, 1);
 }
 
+/* Style les liens externes de la section d'information sur les artistes "featured" */
 .other-authors-container .other-a {
     height: 100%;
     padding: 0.5rem;
@@ -539,6 +617,7 @@ svg {
     border-radius: 3px;
 }
 
+/* Style les liens externes de la section d'information sur les artistes "featured" lorsque la souris passe dessus */
 .other-authors-container .other-a :hover {
     
     border: 2px solid white;
@@ -546,66 +625,71 @@ svg {
     cursor: pointer;
 }
 
+/* Style les sections */
 .container {
     margin-top: 3.5rem;
 }
 
+/* Style l'écriture en rouge */
 .red {
     color: red;
 }
 
-/* .info-grid {
-    min-height: 50rem;
-} */
-
+/* Style les paroles de chansons de la section d'information sur la chanson */
 .lyrics-container {
     max-height: 45rem;
     overflow-y: scroll;
 }
 
+/* Style les liens externes de la section d'information sur la chanson */
 a.link {
     font-size: 30px;
 }
 
+/* Style les liens externes de la section d'information sur la chanson */
 .info-container .links {
     margin-top: 5rem;
 }
 
+/* Style la section de description de la section d'information sur la chanson */
 .info-container p {
     white-space: pre-wrap;
 }
 
+/* Style la barre de défilement */
 ::-webkit-scrollbar {
     width: 1em;
 }
-
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
-
 ::-webkit-scrollbar-thumb {
     background-color: white;
     outline: 1px solid slategrey;
 }
+
+/* Ajoute de la margin */
 h2.marginn {
     margin-bottom: 4rem;
 }
 h2.no-marginn {
     margin: 0;
 }
-
-.white { 
-    color: white !important;
-}
-
-.mid {
-    text-align: center !important;
-}
 .marginnn {
     margin: 1 1 1 1rem;
 }
 
+/* Style l'écriture en blanc */
+.white { 
+    color: white !important;
+}
 
+/* Centre l'écriture */
+.mid {
+    text-align: center !important;
+}
+
+/* Style les boutons like/dislike de la section d'information sur la chanson */
 .like-container .buttonn {
     min-width: 12rem;
     min-height: 3rem;
@@ -622,6 +706,7 @@ h2.no-marginn {
     transition: all 0.08s ease-out;
 }
 
+/* Style les boutons like/dislike de la section d'information sur la chanson pour les petits écrans */
 .like-container .buttonn.small {
     min-width: 6rem;
     min-height: 6rem;
@@ -629,35 +714,43 @@ h2.no-marginn {
     font-size: 4rem;
 }
 
+/* Style les boutons like/dislike de la section d'information sur la chanson lorsqu'ils sont indosponibles */
 .like-container .buttonn.static {
     color: #888;
     border: 3px solid #888;
 }
 
+/* Style les boutons like/dislike de la section d'information sur la chanson lorsque la souris passe dessus */
 .like-container .buttonn.live:hover {
     color: #00E13C;
     border: 3px solid #00E13C;
     cursor: pointer;
 }
 
+/* Style les boutons like/dislike de la section d'information sur la chanson lorsque la souris passe dessus */
 .like-container .buttonn:hover {
     background-color: inherit;
     cursor: default;
 }
 
+/* Style les favoris dans la section des favoris- */
 .grid-container .container .grid-x a.other-a {
     padding: 0;
 }
+
+/* Style le bouton pour supprimer une chanson dans la section des favoris- */
 form.lala {
     margin: auto;
 }
 
+/* Style le bouton pour supprimer une chanson dans la section des favoris- */
 .x-container .x {
     text-align: center;
     align-items: center;
     position: relative;
 }
 
+/* Style le bouton pour supprimer une chanson dans la section des favoris- */
 .x-container .x .like-container {
     margin: 0;
     margin-left: 2rem;
@@ -667,29 +760,29 @@ form.lala {
     transform: translateY(-50%);
 }
 
+/* Styles les liens externes verts lorsque la souris passe dessus */
 a.green:hover {
     color: white;
 }
 
-
+/* Style les formulaires pour se connecter et créer un compte */
 input:-webkit-autofill {
     -webkit-transition: all 0 ease-out !important;
     -moz-transition: all 0 ease-out !important;
     -o-transition: all 0 ease-out !important;
     transition: all 0 ease-out !important;
 }
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px inset black !important;
 }
-
 input:-webkit-autofill{
     -webkit-text-fill-color: white !important;
 }
 
+/* Enlève le padding */
 .no-padding {
     padding: 0 !important;
 }

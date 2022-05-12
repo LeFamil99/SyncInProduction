@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-
+# Permet de lier touts les fichiers urls.py et le frontend à l'aide de path URL
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("main.urls")),
